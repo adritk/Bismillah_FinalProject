@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import {Route} from 'react-router-dom';
 import './App.css';
+// import NavbarPage from './component/Navbar';
+import Login from './component/Login';
+import Home from './pages/Home';
+import Tour from './pages/Tour';
+import Register from './component/Register';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  
+  render() { 
+    return ( 
+      <div className="App">
+
+       <Route path='/' component={Home} exact />
+       <Route path='/paket-tour' component={Tour} />
+       <Route path='/login' component={Login} />
+       <Route path='/register' component={Register} />
+       {/* <Route path='/travelling' component={Register} />
+       <Route path='/attraction' component={Register} /> */}
+      </div>
+     );
+  }
 }
-
+ 
 export default App;

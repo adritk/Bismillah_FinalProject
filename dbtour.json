@@ -1,0 +1,165 @@
+{
+    "package": [
+        {
+            "id": 1,
+            "name":  "Wonderful Bromo-Malang Tour",
+            "category": "Travelling",
+            "duration": "4D3N",
+            "price": 3000000, 
+            "booked":[],
+            "image": "http://localhost:3000/background/backgroundbromo.jfif",
+            "location" : "Jawa Timur, Indonesia"
+        },
+        {
+            "id": 2,
+            "name":  "Summer Paradise Bali Tour",
+            "category": "Travelling",
+            "price": 5000000,
+            "duration": "4D3N", 
+            "booked":[],
+            "image": "http://localhost:3000/background/nusapenida.png",
+            "location" :"Bali, Indonesia"
+
+        },
+        {
+            "id": 3,
+            "name": "Shop & Culinary Yogyakarta Tour",
+            "category": "Travelling",
+            "price": 4000000,
+            "duration": "4D3N",
+            "booked":[],
+            "image": "http://localhost:3000/background/backgroundjogja.jfif",
+            "location":"Daerah Istimewa Yogyakarta, Indonesia"
+        },
+        {
+            "id": 4,
+            "name": "Nusa Penida Tour",
+            "category": "Travelling",
+            "price": 4000000,
+            "duration": "3D2N",
+            "booked":[],
+            "image": "http://localhost:3000/background/backgroundbali.jfif",
+            "location":"Bali, Indonesia"
+        },
+        {
+            "id": 5,
+            "name": "Aceh Tour",
+            "category": "Travelling",
+            "price": 5500000,
+            "duration": "5D4N",
+            "booked":[],
+            "image": "http://localhost:3000/background/aceh.jfif",
+            "location":"Banda Aceh, Indonesia"
+        },
+        {
+            "id": 6,
+            "name": "Medan Tour",
+            "category": "Travelling",
+            "price": 4000000,
+            "duration": "4D3N",
+            "booked":[],
+            "image": "http://localhost:3000/background/medan.jfif",
+            "location":"Sumatera Utara, Indonesia"
+        },
+        {
+            "id": 7,
+            "name": "Lampung Tour",
+            "category": "Travelling",
+            "price": 4000000,
+            "duration": "4D3N",
+            "booked":[],
+            "image": "http://localhost:3000/background/lampung.jpg",
+            "location":"Lampung, Indonesia"
+        },
+        {
+            "id": 8,
+            "name": "Padang Tour",
+            "category": "Travelling",
+            "price": 4500000,
+            "duration": "4D3N",
+            "booked":[],
+            "image": "http://localhost:3000/background/padang.jfif",
+            "location":"Sumatera Barat, Indonesia"
+        },
+        {
+            "id": 9,
+            "name": "Palembang Tour",
+            "category": "Travelling",
+            "price": 3500000,
+            "duration": "3D2N",
+            "booked":[],
+            "image": "http://localhost:3000/background/palembang.jfif",
+            "location":"Sumatera Selatan, Indonesia"
+        },
+        {
+            "id": 10,
+            "name": "Bono River Surfing Tour",
+            "category": "Travelling",
+            "price": 4000000,
+            "duration": "4D3N",
+            "booked":[],
+            "image": "http://localhost:3000/background/riau.jpg",
+            "location":"Riau, Indonesia"
+        },
+        {
+            "id": 11,
+            "name": "Kintamani Tour",
+            "category": "Travelling",
+            "price": 1650000,
+            "duration": "3D2N",
+            "booked":[],
+            "image": "http://localhost:3000/background/kintamani.jfif",
+            "location":"Bali, Indonesia"
+        },
+        {
+            "id": 12,
+            "name": "Bedugul Tour",
+            "category": "Travelling",
+            "price": 1650000,
+            "duration": "3D2N",
+            "booked":[],
+            "image": "http://localhost:3000/background/bedugul.jfif",
+            "location":"Bali, Indonesia"
+        },
+        {   "id": 31,
+            "name": "Dunia Fantasi",
+            "category": "attraction",
+            "price": 150000,
+            "image" : "http://localhost:3000/background/dufan.jpg",
+            "location" : "Jakarta, Indonesia",
+            "description" : ""
+        },
+        {   "id": 32,
+            "name": "Trans Studio Bandung",
+            "category": "attraction",
+            "price": 200000,
+            "image" : "http://localhost:3000/background/trans.jfif",
+            "location" : "Bandung, Indonesia",
+            "description": ""
+        },
+        {   "id" : 33,
+            "name": "Jungle Land",
+            "category": "attraction",
+            "price": 100000,
+            "image" : "http://localhost:3000/background/jungle.jfif",
+            "location" : "Bogor, Indonesia",
+            "description": ""
+        }
+    ],
+    "users": [
+        {
+            "username": "lian",
+            "password": "123",
+            "role": "user",
+            "email": "lian.eddy@mail.com",
+            "id":1
+        },
+        {
+            "username":"admin",
+            "password":"admin",
+            "role":"admin",
+            "email":"admin@admin.com",
+            "id":2
+        }
+    ]
+}
