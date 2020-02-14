@@ -2,25 +2,28 @@ import React, {Component} from 'react';
 import Boxinfo from '../component/Boxinfo'
 import Axios from 'axios'
 import '../style/home.css'
-import { MDBContainer, MDBRow, MDBCol} from "mdbreact";
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardImage} from "mdbreact";
 import {search} from '../img'
 import {shield} from '../img'
 import {card} from '../img'
+import {API_URL} from '../helpers/API_URL'
+import {Button, CustomInput} from 'reactstrap'
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import SearchIcon from '@material-ui/icons/Search';
 import FlightIcon from '@material-ui/icons/Flight';
 import Navfix from '../component/Navfix';
 import Footer from '../component/Footer'
-import $ from 'jquery'
 
 class Home extends Component {
     state = {
-        tour: []
+        tour: [],
+        addImageFileName : 'Select File',
+        addImageFile : undefined
     }
     
     componentDidMount = () => {
-        Axios.get('http://localhost:2000/package')
+        Axios.get('http://localhost:4000/image/getproducts')
         .then((res) => {
             console.log(res.data)
             this.setState({tour: res.data})
@@ -28,34 +31,48 @@ class Home extends Component {
         .catch((err) =>{
             console.log(err)
         })
-        $('.page-scroll').on('click', function() {
-            var tujuan = $(this).attr('href') 
-
-            var elemenTujuan = $(tujuan)
-            // console.log(elemenTujuan.offset().top)
-            $('body').animate({
-                scrollTop : elemenTujuan.offset().top - 50
-            }, 1250, 'linear')
-
-      
-        });
+       
     }
+
+    onBtnUploadFile = (e) => {
+        if(e.target.files[0]){
+            this.setState({ addImageFileName: e.target.files[0].name, addImageFile : e.target.files[0] })
+        }else{
+            this.setState({ addImageFileName: 'Select Image', addImageFile: undefined})
+        }
+    }
+
+    uploadImage = () => {
+        let { addImageFile } = this.state;
+        console.log(addImageFile)
+        if(addImageFile){
+            let formData = new FormData()
+            formData.append('image', addImageFile)
+            Axios.post(API_URL + '/image/upload', formData)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        }
+    }
+
     
     renderTour = () => {
         return (
             this.state.tour.map((val,index) => {
-                if(val.id == 1 || val.id == 2 || val.id == 3){
+                if(val.id == 1 || val.id == 2 || val.id == 3) {
                     return (           
                         <div className="box-2" key={index}>
-                        <img src = {val.image} className="image" alt="notfound"/> 
+                        <img src={API_URL + '/' + val.imagePath} className="image" alt="notfound"/> 
                         <div className="overlay">
-                            <div className="text">{val.name}
+                            <div className="text">{val.title}
                                 <div>
-                                    Rp. {val.price.toLocaleString()}
+                                    Rp. {val.harga.toLocaleString()}
                                     <hr style={{backgroundColor:"white" }}></hr>
                                     <div>
                                     <h6><AccessTimeIcon fontSize="small"/> {val.duration}</h6>
-                                    <h6><FlightIcon fontSize="small"/></h6>
                                     <h6><LocationOnIcon fontSize="small"/>&nbsp;{val.location}</h6>
                                     </div>
                                 </div>
@@ -71,15 +88,16 @@ class Home extends Component {
         renderAttraction = () => {
             return(
                 this.state.tour.map((val,index) => {
-                    if(val.id == 31 || val.id == 32 || val.id == 33) {
+                    if(val.id == 4 || val.id == 5 || val.id == 6) {
                         return (
-                            <div className="box-3" key={index}>
-                        <img src = {val.image} className="image" alt="notfound"/> 
-                        <div className="overlay-2">
-                            <div className="text-home-tour">{val.name}
+                            <div className="box-2" key={index}>
+                        <img src = {API_URL + '/' +val.imagePath} className="image" alt="notfound"/> 
+                        <div className="overlay">
+                            <div className="text-2">{val.title}
                                 <div>
-                                    Rp. {val.price.toLocaleString()}
+                                    Rp. {val.harga.toLocaleString()}
                                     <hr style={{backgroundColor:"white"}}></hr>
+                                    <h6><LocationOnIcon fontSize="small"/>&nbsp;{val.location}</h6>
                                 </div>
                             </div>
                         </div>
@@ -91,6 +109,15 @@ class Home extends Component {
         }
         
         render() { 
+            const style = {
+                display : 'flex',
+                flexDirection : 'row',
+                flexWrap : 'wrap',
+                justifyContent : 'space-between',
+                marginTop: "150px", 
+                textAlign: "center",
+                color: "white"
+             }
             return ( 
                 <div> 
                            <Navfix />
@@ -138,8 +165,53 @@ class Home extends Component {
                 <h1>Taman Bermain</h1>
                 <div className= "content">
                     {this.renderAttraction()}
+
+                        {/* <div style={{marginTop: "500px"}}>
+                        <CustomInput onChange={this.onBtnUploadFile} label={this.state.addImageFileName} type='file'/>
+                <Button onClick={this.uploadImage}>
+                    Upload 
+                </Button>
+                        </div> */}
+
                 </div>
 
+         
+
+<div style={style}> 
+
+  <MDBRow  >
+    <MDBCol md="3">
+        <MDBCard style={{ width: "16rem" }}>
+            <MDBCardImage style={{height: "15rem"}} className="img-fluid" src="https://3.bp.blogspot.com/-lVP5yyt8kPw/V42cfBpTcqI/AAAAAAAAALU/NPsgvWOiqkYN8IJqr1c4FDOBuAVmIVnrgCEw/s1600/gadang.JPG" waves />
+            <div className="centered">SUMATERA</div>
+        </MDBCard>
+    </MDBCol>
+
+    <MDBCol md="3">
+        <MDBCard style={{ width: "16rem"  }}>
+            <MDBCardImage style={{height: "15rem"}} className="img-fluid" src="https://www.bestfunforall.com/wallpaperbetter/imgs/Borobudur%20Temple%20Indonesia%20wallpaper%20%2012.jpg" waves />
+            <div className="centered">JAVA</div>
+        </MDBCard>
+    </MDBCol>
+
+
+    <MDBCol md="3">
+    <MDBCard style={{ width: "16rem" }}>
+            <MDBCardImage style={{height: "15rem"}} className="img-fluid" src="https://perjuanganonline.com/wp-content/uploads/2019/07/1607bali2.jpg" waves />
+        </MDBCard>
+        <div className="centered">BALI</div>
+    </MDBCol>
+
+
+    <MDBCol md="3">
+    <MDBCard style={{ width: "16rem" }}>
+            <MDBCardImage style={{height: "15rem"}} className="img-fluid" src="https://4.bp.blogspot.com/-gK6Z7mY_aLo/VQAoCaiZWdI/AAAAAAAAAGE/nC3eXivqnr4/s1600/IMG_3391-1600x900.jpg" waves />
+        </MDBCard>
+        <div className="centered">SULAWESI</div>
+    </MDBCol>
+  </MDBRow>
+
+</div>
                 </section>
                         <div id="footer">
                             <Footer />
@@ -147,6 +219,7 @@ class Home extends Component {
             </div>
             
          );
+       
     }
 }
  

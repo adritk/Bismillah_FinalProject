@@ -9,6 +9,7 @@ import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
 import PlaceIcon from '@material-ui/icons/Place';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import InfoIcon from '@material-ui/icons/Info';
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 const Navfix = () => {
     return(
@@ -36,7 +37,12 @@ const Navfix = () => {
                         <li><PlaceIcon className="iconNav"/>Tour Domestik</li>
                         <li><ConfirmationNumberIcon className="iconNav"/>Tiket Atraksi</li>
                         <li><PhotoCameraIcon className="iconNav"/>Gallery</li>
-                        <li><InfoIcon className="iconNav"/><a href="#footer" className="page-scroll">About Us</a></li>
+                        <li>
+                            <InfoIcon className="iconNav"/>
+                            <AnchorLink className="penting" href='#footer' style={{color:"black"}}>About Us
+                            </AnchorLink>
+                        </li>
+                        {/* <li><InfoIcon className="iconNav"/><a href="#footer" className="page-scroll">About Us</a></li> */}
                         </ul>
                     </div>
             </div>

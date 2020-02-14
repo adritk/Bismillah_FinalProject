@@ -1,11 +1,4 @@
-/* html{
-    position: relative;
-}
-
-body {
-    margin-bottom: 250px;
-} */
-
+/* STYLE BACKGROUND */
 
 .header {
     height: 600px;
@@ -17,37 +10,36 @@ body {
 
 }
 
+/* STYLE TITLE BACKGROUND */
 .header h1 {
-    padding-top: 160px;
+    padding-top: 200px;
     padding-bottom: 0;
     font-size: 55px;
+    font-family: 'Patua One', cursive;
 }
 
 .header p {
     margin: 18px 0;
     font-size: 24px;
+    font-family: 'Patua One', cursive;
 }
 
-/* .input-group{
-    width: 90%;
-    max-width: 500px;
-    border-radius: 50px;
-    padding: 2px;
-    background: #fff;
-    margin: auto;
-} */
-
-.group-containt{
-    margin-top: 25px;
-    text-align: center;
-}
-
+/* STYLE SECTION-2 */
 .section-2 h1 {
     margin-top: 30px;
     color: #495b5f;
     font-weight: 400;
     font-size: 32px;
-    line-height: 32px;
+    line-height: 32px;  
+    font-family: 'Patua One', cursive;
+}
+
+/* STYLE CARD DESTINASI & TAMAN*/
+.box-2 {
+    height: auto;
+    width: 350px;
+    margin: 30px auto 0px auto;
+    position: relative;
 }
 
 .section-3 h1{
@@ -57,6 +49,7 @@ body {
     font-weight: 400;
     font-size: 32px;
     line-height: 32px;
+    font-family: 'Patua One', cursive;  
 }
 
 .image {
@@ -71,54 +64,60 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color:rgba(7, 7, 7, 0.7);
+    background-color:rgba(9, 9, 9, 0.3);
     overflow: hidden;
     width: 100%;
     height: 80px;
-    border-radius: 20px;
+    border-radius: 15px;
     transition: .9s ease;
     margin-bottom: -30px;
-    }
+}
       
 .box-2:hover .overlay {
     height: 360px;
+    background-color:rgba(9, 9, 9, 0.8);
 }
-      
+
+
+    /* STYLE TITLE OVERLAY ON IMAGE  */
 .text {
     white-space: nowrap; 
     color: white;
     font-size: 18px;
     position: relative;
     overflow: hidden;
-    top: 0;
+    /* top: 0; */
     left: 55%;
     transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
-    margin-top: 100px;
+    margin-top: 85px;
     text-align: left;
-
+    font-weight: 500;
 }
 
-.box-2 {
-    height: auto;
-    width: 350px;
-    margin: 30px auto 0px auto;
-    position: relative;
+.text-2 {
+    margin-top: 15px;
+    margin-left: 15px;
+    color: white;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 500;
 }
 
+/* STYLE DESTINASI TERBAIK & TAMAN BERMAIN */
 .section-3 {
     display: flex;
     height: 400px;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    align-items: center;    
 }
 
 .section-3 h1 {
     margin-bottom: 3px;
-    margin-top: 10px;
+    margin-top: 10px;    
 }
 
+/* STYLE DI BALIK BOX DESTINASI & TAMAN */
 .content {
     display: flex;
     width: 76%;
@@ -126,6 +125,7 @@ body {
     justify-content: space-evenly;
 }
 
+/* STYLE BOX TAMAN BERMAIN */
 .box-3 {
     height: auto;
     width: 350px;
@@ -133,38 +133,16 @@ body {
     position: relative;
 }
 
-.text-home-tour {
-    white-space: nowrap; 
-    color: white;
-    font-size: 18px;
-    position: relative;
-    overflow: hidden;
-    top: 0;
-    left: 55%;
-    transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-    margin-top: 60px;
-    text-align: left;
-}
-
-.overlay-2{
+.centered {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color:rgba(7, 7, 7, 0.7);
-    overflow: hidden;
-    width: 100%;
-    height: 80px;
-    border-radius: 20px;
-    transition: .9s ease;
-    margin-bottom: -30px;
-    }
-
-.box-3:hover .overlay-2 {
-        height: 360px;
-    }
-
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 1px;
+    font-family: 'Acme', sans-serif;
+}
 
 
 

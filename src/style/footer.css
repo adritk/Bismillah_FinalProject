@@ -8,9 +8,7 @@
 
 .row-1 {
     position: absolute;
-    margin-top: 20px;
-    margin-left: 90px;
-    height: 229px;
+    height: 200px;
     width: 330px;
     font-weight: 600;
     /* border: 1px solid black; */
@@ -36,15 +34,36 @@
     }      
 
 .logoPhone {
-    margin-top: 20px;
+    margin-top: 80px;
     margin-left: -187px;
     font-size: 15px;
     /* border: 1px solid black; */
     }
 
 .logoEmail{
-    margin-top: 20px;
+    margin-top: 15px;
     margin-left:-115px;
     }
     
     /* LAYANAN KAMI */
+
+ .paketTour {
+     margin-top: 18px;
+     /* padding-left: 23px; */
+     /* background-color: blue; */
+ }
+
+ .tiketAtraksi {
+     /* margin-left: -42px; */
+     margin-top: 18px;
+ }
+
+ .infoWisata {
+    margin-top: 18px;
+    /* margin-left: -23px; */
+ }
+
+ .tentangKami {
+     margin-top: 18px;
+     text-align:left;
+ }
