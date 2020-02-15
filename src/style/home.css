@@ -7,7 +7,6 @@
     background-size: cover;
     color: #fff;
     text-align: center;
-
 }
 
 /* STYLE TITLE BACKGROUND */
@@ -142,6 +141,33 @@
     font-size: 20px;
     letter-spacing: 1px;
     font-family: 'Acme', sans-serif;
+}
+
+.bannerInfo {
+    background-image: url('../img/banner.png');
+    height: 240px; 
+    margin-top: 480px;
+    justify-content : space-between;
+    align-items: center;
+}
+
+.bannerInfo p {
+    height: 50px;
+    width: 140px;
+    color: #fff;
+    border-radius: 30px;
+    margin: 5px auto;
+    padding: 10px 5px 2px 5px;
+    background-color:#0d47a1;
+    /* box-sizing: border-box; */
+}
+
+.bannerInfo h1 {
+    font-weight: 600;
+    font-size: 22px;
+    padding-top: 80px;
+    color: #0d47a1;
+    /* box-sizing: border-box; */
 }
 
 

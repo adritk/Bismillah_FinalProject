@@ -114,13 +114,13 @@ class Home extends Component {
                 flexDirection : 'row',
                 flexWrap : 'wrap',
                 justifyContent : 'space-between',
-                marginTop: "150px", 
+                marginTop: "25px", 
                 textAlign: "center",
                 color: "white"
              }
             return ( 
                 <div> 
-                           <Navfix />
+                <Navfix />
             <section className="header">
                <h1>Mari Jelajahi Keindahan Indonesia</h1>
                <p>Kepuasan Anda adalah tujuan kami</p>
@@ -128,7 +128,7 @@ class Home extends Component {
 
             
                <section className="section-2">
-                   <h1>Why Travel ?</h1>  
+                   <h1>Mengapa AnterIn ?</h1>  
                    <MDBContainer>
                        <MDBRow>
                             <Boxinfo title="Carinya Mudah" 
@@ -166,19 +166,13 @@ class Home extends Component {
                 <div className= "content">
                     {this.renderAttraction()}
 
-                        {/* <div style={{marginTop: "500px"}}>
-                        <CustomInput onChange={this.onBtnUploadFile} label={this.state.addImageFileName} type='file'/>
-                <Button onClick={this.uploadImage}>
-                    Upload 
-                </Button>
-                        </div> */}
-
                 </div>
-
-         
+                <hr 
+                style={{marginTop: "80px",width: "74%"}}>
+                </hr>
+                <h1>Mau Kemana ?</h1>
 
 <div style={style}> 
-
   <MDBRow  >
     <MDBCol md="3">
         <MDBCard style={{ width: "16rem" }}>
@@ -210,17 +204,53 @@ class Home extends Component {
         <div className="centered">SULAWESI</div>
     </MDBCol>
   </MDBRow>
-
 </div>
+
                 </section>
+                <div className="bannerInfo">
+                <MDBContainer>  
+
+                <MDBRow> 
+                <MDBCol md="4">
+                   <h1>50</h1>
+                    <p >
+                        Paket Tour
+                    </p>
+                </MDBCol>
+
+                <MDBCol md="4">
+                    <h1>50</h1>
+                    <p >
+                        Theme Park
+                    </p>
+                </MDBCol>
+
+                <MDBCol md="4">
+                    <h1>50</h1>
+                    <p >
+                        Water Park
+                    </p>
+                </MDBCol>
+
+                </MDBRow>
+                </MDBContainer>
+                </div>
+                
                         <div id="footer">
                             <Footer />
                         </div>
             </div>
             
-         );
-       
+            );
+            
+        }
     }
-}
- 
+    
 export default Home;
+    
+                            {/* <div style={{marginTop: "500px"}}>
+                            <CustomInput onChange={this.onBtnUploadFile} label={this.state.addImageFileName} type='file'/>
+                    <Button onClick={this.uploadImage}>
+                        Upload 
+                    </Button>
+                            </div> */}

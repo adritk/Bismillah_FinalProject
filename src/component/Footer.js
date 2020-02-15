@@ -16,7 +16,7 @@ const Footer = () => {
                     <div className="logoInfo">
                     <h3>Kontak Kami</h3>
                     <hr 
-                    style={{border: "2px solid white",
+                    style={{border: "2px solid grey",
                             width: "42%",
                             marginLeft: "3px",
                             borderRadius: "2px"
@@ -35,7 +35,7 @@ const Footer = () => {
 
                         <div className="logoEmail">
                             <EmailIcon /> 
-                            <span>&nbsp; &nbsp;Adirsca@travelindo.com</span>
+                            <span>&nbsp; &nbsp;Adirsca@AnterIn.com</span>
                         </div>
                 </div>
 
@@ -47,7 +47,7 @@ const Footer = () => {
                     <div className="paketTour">
                     <h3>Layanan Kami</h3>
                     <hr 
-                    style={{border: "2px solid white",
+                    style={{border: "2px solid grey",
                             width: "50%",
                             marginLeft: "81px",
                             borderRadius: "2px"
@@ -58,12 +58,15 @@ const Footer = () => {
                     </div>
 
                         <div className="tiketAtraksi">
-                            
-                            <span style={{marginLeft: "-78px"}}>Tiket Atraksi</span>
+                            <span style={{marginLeft: "-78px"}}>Tiket Taman Hiburan</span>
                         </div>
 
+                        <div className="tiketAir">
+                            <span style={{marginLeft: "-78px"}}>Tiket Taman Air</span>
+                        </div>
+
+
                         <div className="infoWisata">
-                           
                             <span style={{marginLeft: "-45px"}}>Informasi Wisata</span>
                         </div>
                     </div>
@@ -77,13 +80,13 @@ const Footer = () => {
                         <div className="tentangKami">
                         <h3>Tentang Kami</h3>
                         <hr 
-                    style={{border: "2px solid white",
+                    style={{border: "2px solid grey",
                             width: "50%",
                             marginLeft: "0px",
                             borderRadius: "2px"
                              }}
                     />
-                        <span>Travelindo merupakan penyedia jasa layanan wisata untuk para traveler yang ingin berlibur dengan nyaman, aman, dan menyenangkan. </span>
+                        <span>AnterIn merupakan penyedia jasa layanan wisata untuk para traveler yang ingin berlibur dengan nyaman, aman, dan menyenangkan. </span>
                         </div>
                     </div>
                 </MDBCol>

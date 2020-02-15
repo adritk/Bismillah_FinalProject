@@ -2,8 +2,8 @@
     width: 100%;
     height: 250px;
     bottom: 0;
-    background-color: grey;
-    margin-top: 900px;
+    background: #0d47a1;
+    margin-top: 100px;
 }
 
 .row-1 {
@@ -42,7 +42,7 @@
 
 .logoEmail{
     margin-top: 15px;
-    margin-left:-115px;
+    margin-left:-135px;
     }
     
     /* LAYANAN KAMI */
@@ -54,12 +54,17 @@
  }
 
  .tiketAtraksi {
-     /* margin-left: -42px; */
-     margin-top: 18px;
+     margin-left: 55px;
+     margin-top: 10px;
  }
 
+ .tiketAir {
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
  .infoWisata {
-    margin-top: 18px;
+    margin-top: 10px;
     /* margin-left: -23px; */
  }
 
