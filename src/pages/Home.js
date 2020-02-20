@@ -7,7 +7,6 @@ import {search} from '../img'
 import {shield} from '../img'
 import {card} from '../img'
 import {API_URL} from '../helpers/API_URL'
-import {Button, CustomInput} from 'reactstrap'
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import SearchIcon from '@material-ui/icons/Search';
@@ -17,51 +16,24 @@ import Footer from '../component/Footer'
 
 class Home extends Component {
     state = {
-        tour: [],
-        addImageFileName : 'Select File',
-        addImageFile : undefined
+        products: []
     }
     
     componentDidMount = () => {
-        Axios.get('http://localhost:4000/image/getproducts')
+        Axios.get('http://localhost:4000/getpackage')
         .then((res) => {
             console.log(res.data)
-            this.setState({tour: res.data})
+            this.setState({products: res.data})
         })
         .catch((err) =>{
             console.log(err)
-        })
-       
+        })  
     }
 
-    onBtnUploadFile = (e) => {
-        if(e.target.files[0]){
-            this.setState({ addImageFileName: e.target.files[0].name, addImageFile : e.target.files[0] })
-        }else{
-            this.setState({ addImageFileName: 'Select Image', addImageFile: undefined})
-        }
-    }
-
-    uploadImage = () => {
-        let { addImageFile } = this.state;
-        console.log(addImageFile)
-        if(addImageFile){
-            let formData = new FormData()
-            formData.append('image', addImageFile)
-            Axios.post(API_URL + '/image/upload', formData)
-            .then((res) => {
-                console.log(res)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-        }
-    }
-
-    
+   
     renderTour = () => {
         return (
-            this.state.tour.map((val,index) => {
+            this.state.products.map((val,index) => {
                 if(val.id == 1 || val.id == 2 || val.id == 3) {
                     return (           
                         <div className="box-2" key={index}>
@@ -87,7 +59,7 @@ class Home extends Component {
         
         renderAttraction = () => {
             return(
-                this.state.tour.map((val,index) => {
+                this.state.products.map((val,index) => {
                     if(val.id == 4 || val.id == 5 || val.id == 6) {
                         return (
                             <div className="box-2" key={index}>
