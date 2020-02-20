@@ -9,7 +9,7 @@ class AdminPage extends Component {
         openModal : false,
         addImageFileName : 'Select File',
         addImageFile : undefined,
-        selectedId : null
+        showImage : null
     }
 
     componentDidMount() {
@@ -36,28 +36,17 @@ class AdminPage extends Component {
     onBtnUploadFile = (e) => {
         if(e.target.files[0]){
             this.setState({ addImageFileName: e.target.files[0].name, addImageFile : e.target.files[0] })
+            this.setState({showImage: URL.createObjectURL(e.target.files[0])})
         }else{
             this.setState({ addImageFileName: 'Select Image', addImageFile: undefined})
         }
     }
 
-    uploadImage = () => {
+    UploadProduct = () => {
         let { addImageFile } = this.state;
         console.log(addImageFile)
         if(addImageFile){
-            let formData = new FormData()
-            formData.append('image', addImageFile)
-            Axios.post(API_URL + '/upload', formData)
-            .then((res) => {
-                console.log(res)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-        }
-    }
-
-    addProduct = () => {
+        let formData = new FormData()
         let title = this.title.value
         let harga = this.harga.value
         let description = this.description.value
@@ -70,18 +59,53 @@ class AdminPage extends Component {
             location,
             duration
         }
-        if (title && harga && description && location && duration ) {
-            Axios.post(API_URL + `/addpackage`, product)
+        if (title && harga && description && location && duration ){
+            formData.append('data', JSON.stringify(product))
+            formData.append('image', addImageFile)
+            console.log(formData)
+            Axios.post(API_URL + '/addpackage', formData)
             .then((res) => {
-                console.log(res.data)
-                this.getProduct()   
+                console.log(res)
+                alert('add succesfull')
+                this.setState({openModal : false, showImage : null, addImageFile : null})
+                this.getProduct()  
             })
             .catch((err) => {
                 console.log(err)
             })
-        }
-            
+                } 
+            }
+                else{
+                        alert('isi semua kolom')
+                    }
     }
+    
+
+    // addProduct = () => {
+    //     let title = this.title.value
+    //     let harga = this.harga.value
+    //     let description = this.description.value
+    //     let location = this.location.value
+    //     let duration = this.duration.value
+    //     let product = {
+    //         title,
+    //         harga,
+    //         description,
+    //         location,
+    //         duration
+    //     }
+    //     if (title && harga && description && location && duration ) {
+    //         Axios.post(API_URL + `/addpackage`, product)
+    //         .then((res) => {
+    //             console.log(res.data)
+    //             this.getProduct()   
+    //         })
+    //         .catch((err) => {
+    //             console.log(err)
+    //         })
+    //     }
+            
+    // }
 
     renderProduct = () => {
         return this.state.product.map((item, index) => {
@@ -165,17 +189,32 @@ class AdminPage extends Component {
                                 Image
                             <Input 
                             onChange={this.onBtnUploadFile} label={this.state.addImageFileName} type='file'/>
-                              <Button onClick={this.uploadImage} 
+                              {/* <Button onClick={this.uploadImage}  //func upload product
                               style={{width: '100px', height: "30px", padding: '0px', marginLeft: '0px'}}>
                                  Upload 
-                              </Button>
+                              </Button> */}
                             </Label>
+
+                            <div style={{marginTop:'25px', float: 'right', width: "162px", height:"90px"}}>
+                            <label className='CRUD-Input-File'>
+                                {
+                                    this.state.showImage
+                                    ?
+                                    <img style={{width: "162px", height: '90px'}} src={this.state.showImage}/>
+                                    :
+                                    <div></div>
+                                    
+                                }
+                                
+                        
+                            </label>
+                        </div>
                             
                         </ModalBody>
 
                         <ModalFooter>
-                        <Button color="primary" onClick={this.addProduct}>Confirm</Button>
-                        <Button color="warning" onClick={() => this.setState({openModal:false})}>Cancel</Button>
+                        <Button color="primary" onClick={this.UploadProduct}>Confirm</Button>
+                        <Button color="warning" onClick={() => this.setState({openModal:false,addImageFile: null, showImage: null})}>Cancel</Button>
                         </ModalFooter>
                 </Modal>
                 <br></br>
