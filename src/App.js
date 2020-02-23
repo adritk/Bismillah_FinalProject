@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
 import './App.css';
-import AdminPage from './pages/Admin'
+import ManageProduct from './pages/ManageProduct'
+import ManageCategory from './pages/ManageCategory'
+import Admin from './pages/Admin'
 import Home from './pages/Home';
 import Tour from './pages/Tour';
 import Register from './component/Register';
@@ -14,8 +16,10 @@ class App extends Component {
     return ( 
       <div className="App">
        <Route path='/' component={Home} exact />
-       <Route path='/admin' component={AdminPage} />
-       <Route path='/paket-tour' component={Tour} />
+       <Route path='/manageproduct' component={ManageProduct} />
+       <Route path='/managecategory' component={ManageCategory} />
+       <Route path='/admin' component={Admin} />
+       <Route path='/tourdomestik' component={Tour} />
        <Route path='/login' component={Login} />
        <Route path='/register' component={Register} />
       </div>

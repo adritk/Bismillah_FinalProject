@@ -5,6 +5,8 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import FlightIcon from '@material-ui/icons/Flight';
 import { MDBCol, MDBContainer, MDBRow } from 'mdbreact';
+import {API_URL} from '../helpers/API_URL'
+import Navfix from '../component/Navfix';
 
 export default class Tour extends Component {
     state = {
@@ -12,7 +14,7 @@ export default class Tour extends Component {
     }
 
     componentDidMount = () => {
-        Axios.get('http://localhost:2000/package')
+        Axios.get(API_URL + '/getpackagedomestik')
         .then((res) => {
             console.log(res.data)
             this.setState({tour: res.data})
@@ -23,20 +25,19 @@ export default class Tour extends Component {
     }
 
     renderTour = () => {
+       
         return(
             this.state.tour.map((val,index) => {
-                if(val.category == 'Travelling') {
                     return (
                         <div className="box-tour">
-                        <img src = {val.image} className="image-2" alt="notfound"/> 
+                        <img src = {API_URL + '/' + val.imagePath} className="image-2" alt="notfound"/> 
                             <div className="overlay-tour">
-                        <div className="text-tour">{val.name}
+                        <div className="text-tour">{val.title}
                             <div>
-                                Rp. {val.price.toLocaleString()}
+                                Rp. {val.harga.toLocaleString()}
                                 <hr style={{backgroundColor:"white" }}></hr>
                                 <div>
                                 <h6><AccessTimeIcon fontSize="small"/> {val.duration}</h6>
-                                <h6><FlightIcon fontSize="small"/></h6>
                                 <h6><LocationOnIcon fontSize="small"/>&nbsp;{val.location}</h6>
                                 </div>
                             </div>
@@ -44,16 +45,17 @@ export default class Tour extends Component {
                     </div>
                     </div>
                 )
-            }
+            
         })
     )
 
     }
     render() {
         return (
-            
+            <div>
+                 <Navfix />
             <MDBContainer fluid className="belakang">
-                <nav aria-label="breadcrumb" style={{marginTop: "100px"}}>
+                <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
                         <li class="breadcrumb-item active">Tour Domestik</li>
@@ -64,6 +66,7 @@ export default class Tour extends Component {
                        {this.renderTour()}
                     </MDBRow>
             </MDBContainer>
+            </div>
         
         )
     }

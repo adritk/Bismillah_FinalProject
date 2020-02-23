@@ -11,6 +11,7 @@ import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import InfoIcon from '@material-ui/icons/Info';
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 
+
 const Navfix = () => {
     return(
             <div className="myNavbar">
@@ -33,8 +34,19 @@ const Navfix = () => {
 
                     <div className="second-nav">
                         <ul className="menu-nav"> 
-                        <li><HomeIcon className="iconNav"/>Home</li>
-                        <li><PlaceIcon className="iconNav"/>Tour Domestik</li>
+
+                        <Link to="/" style={{color:"black"}}>
+                        <li>
+                            <HomeIcon className="iconNav"/>Home
+                        </li>
+                        </Link>
+                        
+                        <Link to="/tourdomestik" style={{color:"black"}}>
+                        <li>
+                            <PlaceIcon className="iconNav"/>Tour Domestik
+                        </li>
+                        </Link>
+                      
                         <li><ConfirmationNumberIcon className="iconNav"/>Tiket Atraksi</li>
                         <li><PhotoCameraIcon className="iconNav"/>Gallery</li>
                         <li>
