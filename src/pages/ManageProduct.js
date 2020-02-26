@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Table, TableHead, TableCell, TableRow, TableBody} from '@material-ui/core';
 import {Modal, ModalHeader, ModalBody, ModalFooter, Input,Label,Button } from 'reactstrap';
+import CKEditor from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Axios from 'axios'
 import SideBarAdmin from '../component/SideBarAdmin'
 import {API_URL} from '../helpers/API_URL'
@@ -13,6 +15,7 @@ class ManageProduct extends Component {
         addImageFile : undefined,
         showImage : null,
         selectedId : null
+        // itinerary: ''
     }
 
     componentDidMount() {
@@ -50,12 +53,14 @@ class ManageProduct extends Component {
         let description = this.description.value
         let location = this.location.value
         let duration = this.duration.value
+        let itinerary = this.state.itinerary
         let product = {
             title,
             harga,
             description,
             location,
-            duration
+            duration,
+            itinerary
         }
         if (title && harga && description && location && duration ){
             formData.append('data', JSON.stringify(product))
@@ -175,7 +180,7 @@ class ManageProduct extends Component {
                     return (
                         <TableRow>
                                 <TableCell>
-                                    {item.id}
+                                    {index + 1}
                                 </TableCell>
 
                                 <TableCell>
@@ -216,9 +221,9 @@ class ManageProduct extends Component {
         return ( 
             <div>
                 <SideBarAdmin />
-                <Button color="success" style={{marginTop: "80px", marginLeft: "50px"}} onClick={()=> this.setState({openModal:true})}>Add Package</Button>
+                <Button color="success" style={{marginTop: "50px", marginLeft: "50px"}} onClick={()=> this.setState({openModal:true})}>Add Package</Button>
 
-                <Modal isOpen={openModal}>
+                <Modal isOpen={openModal} size="lg">
                     <ModalHeader>Add Package</ModalHeader>
                         <ModalBody >
                             <Label>
@@ -257,6 +262,30 @@ class ManageProduct extends Component {
                             </Label><br></br>
 
                             <Label>
+                                Itinerary
+                                <CKEditor
+                                    editor={ ClassicEditor }
+                                    data={this.state.itinerary}
+                                    onInit={ editor => {
+                                        // You can store the "editor" and use when it is needed.
+                                        console.log( 'Editor is ready to use!', editor );
+                                    } }
+                                    onChange={ ( event, editor ) => {
+                                        const data = editor.getData();
+                                        this.setState({...this.state, itinerary: data})
+                                        console.log( { event, editor, data } );
+                                    } }
+                                    onBlur={ ( event, editor ) => {
+                                        console.log( 'Blur.', editor );
+                                    } }
+                                    onFocus={ ( event, editor ) => {
+                                        console.log( 'Focus.', editor );
+                                    } }
+                                />
+                            </Label>
+                            <br></br>
+
+                            <Label>
                                 Image
                             <Input 
                             onChange={this.onBtnUploadFile} label={this.state.addImageFileName} type='file' style={{width: "100%"}}/>
@@ -267,7 +296,7 @@ class ManageProduct extends Component {
                                 {
                                     this.state.showImage
                                     ?
-                                    <img style={{width: "162px", height: '90px'}} src={this.state.showImage}/>
+                                    <img style={{width: "162px", height: '90px'}} src={this.state.showImage} alt="not-found"/>
                                     :
                                     <div></div>
                                     
@@ -287,7 +316,7 @@ class ManageProduct extends Component {
                 <br></br>
                 <Table>
                     <TableHead>
-                            <TableCell>ID</TableCell>
+                            <TableCell>NO</TableCell>
                             <TableCell>Title</TableCell>
                             <TableCell>Price</TableCell>
                             <TableCell>Description</TableCell>

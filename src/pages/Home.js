@@ -3,14 +3,11 @@ import Boxinfo from '../component/Boxinfo'
 import Axios from 'axios'
 import '../style/home.css'
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardImage} from "mdbreact";
-import {search} from '../img'
-import {shield} from '../img'
-import {card} from '../img'
+import {search,shield,card,cardjawa,cardbali,cardsulawesi,cardsumatera,cardlombok,cardkupang,cardpulauseribu,cardsabang} from '../img'
 import {API_URL} from '../helpers/API_URL'
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import SearchIcon from '@material-ui/icons/Search';
-import FlightIcon from '@material-ui/icons/Flight';
+
 import Navfix from '../component/Navfix';
 import Footer from '../component/Footer'
 
@@ -49,6 +46,9 @@ class Home extends Component {
                                     </div>
                                 </div>
                             </div>
+                            <div style={{marginTop: "35px", borderRadius: "30px"}}>
+                                <input type="button" value="More Info" className="btnInfo"/>
+                            </div>
                         </div>
                     </div>
                     )
@@ -72,6 +72,9 @@ class Home extends Component {
                                     <h6><LocationOnIcon fontSize="small"/>&nbsp;{val.location}</h6>
                                 </div>
                             </div>
+                            <div style={{marginTop: "140px", borderRadius: "30px"}}>
+                                <input type="button" value="More Info" className="btnInfo"/>
+                            </div>
                         </div>
                     </div>
                     )
@@ -82,13 +85,15 @@ class Home extends Component {
         
         render() { 
             const style = {
-                display : 'flex',
-                flexDirection : 'row',
-                flexWrap : 'wrap',
-                justifyContent : 'space-between',
+                // display : 'flex',
+                // flexDirection : 'row',
+                // flexWrap : 'wrap',
+                // justifyContent : 'space-between',
+                // marginLeft : "10px,"
                 marginTop: "25px", 
-                textAlign: "center",
-                color: "white"
+                // textAlign: "center",
+                color: "white",
+                paddingBottom : 25
              }
             return ( 
                 <div> 
@@ -148,14 +153,14 @@ class Home extends Component {
   <MDBRow  >
     <MDBCol md="3">
         <MDBCard style={{ width: "16rem" }}>
-            <MDBCardImage style={{height: "15rem"}} className="img-fluid" src="https://3.bp.blogspot.com/-lVP5yyt8kPw/V42cfBpTcqI/AAAAAAAAALU/NPsgvWOiqkYN8IJqr1c4FDOBuAVmIVnrgCEw/s1600/gadang.JPG" waves />
+            <MDBCardImage style={{height: "15rem"}} className="img-fluid" src={cardsumatera} waves />
             <div className="centered">SUMATERA</div>
         </MDBCard>
     </MDBCol>
 
     <MDBCol md="3">
         <MDBCard style={{ width: "16rem"  }}>
-            <MDBCardImage style={{height: "15rem"}} className="img-fluid" src="https://www.bestfunforall.com/wallpaperbetter/imgs/Borobudur%20Temple%20Indonesia%20wallpaper%20%2012.jpg" waves />
+            <MDBCardImage style={{height: "15rem"}} className="img-fluid" src={cardjawa} waves />
             <div className="centered">JAVA</div>
         </MDBCard>
     </MDBCol>
@@ -163,49 +168,70 @@ class Home extends Component {
 
     <MDBCol md="3">
     <MDBCard style={{ width: "16rem" }}>
-            <MDBCardImage style={{height: "15rem"}} className="img-fluid" src="https://perjuanganonline.com/wp-content/uploads/2019/07/1607bali2.jpg" waves />
+            <MDBCardImage style={{height: "15rem"}} className="img-fluid" src={cardkupang} waves />
         </MDBCard>
-        <div className="centered">BALI</div>
+        <div className="centered">KUPANG</div>
     </MDBCol>
 
 
     <MDBCol md="3">
     <MDBCard style={{ width: "16rem" }}>
-            <MDBCardImage style={{height: "15rem"}} className="img-fluid" src="https://4.bp.blogspot.com/-gK6Z7mY_aLo/VQAoCaiZWdI/AAAAAAAAAGE/nC3eXivqnr4/s1600/IMG_3391-1600x900.jpg" waves />
+            <MDBCardImage style={{height: "15rem"}} className="img-fluid" src={cardsulawesi} waves />
         </MDBCard>
         <div className="centered">SULAWESI</div>
     </MDBCol>
   </MDBRow>
+
+
+  
+</div>
+<div style={{color: "white"}}>
+<MDBRow  >
+    <MDBCol md="3">
+    <MDBCard style={{ width: "16rem" }}>
+    <MDBCardImage style={{height: "15rem"}} className="img-fluid" src={cardlombok} waves />
+    <div className="centered">LOMBOK</div>
+    </MDBCard>
+    </MDBCol>
+    
+    <MDBCol md="3">
+    <MDBCard style={{ width: "16rem"  }}>
+    <MDBCardImage style={{height: "15rem"}} className="img-fluid" src={cardsabang} waves />
+    <div className="centered">ACEH</div>
+    </MDBCard>
+    </MDBCol>
+    
+    
+    <MDBCol md="3">
+    <MDBCard style={{ width: "16rem" }}>
+    <MDBCardImage style={{height: "15rem"}} className="img-fluid" src={cardpulauseribu} waves />
+    </MDBCard>
+    <div className="centered">PULAU SERIBU</div>
+    </MDBCol>
+    
+    
+    <MDBCol md="3">
+    <MDBCard style={{ width: "16rem" }}>
+    <MDBCardImage style={{height: "15rem"}} className="img-fluid" src={cardbali} waves />
+    </MDBCard>
+    <div className="centered">BALI</div>
+    </MDBCol>
+</MDBRow>
 </div>
 
                 </section>
                 <div className="bannerInfo">
-                <MDBContainer>  
-
-                <MDBRow> 
-                <MDBCol md="4">
-                   <h1>50</h1>
-                    <p >
-                        Paket Tour
-                    </p>
-                </MDBCol>
-
-                <MDBCol md="4">
-                    <h1>50</h1>
-                    <p >
-                        Theme Park
-                    </p>
-                </MDBCol>
-
-                <MDBCol md="4">
-                    <h1>50</h1>
-                    <p >
-                        Water Park
-                    </p>
-                </MDBCol>
-
-                </MDBRow>
-                </MDBContainer>
+                        <ul>
+                            <li>   
+                                <p>Paket Tour</p>
+                            </li>
+                            <li>
+                                <p>Theme Park</p>
+                            </li>
+                            <li>
+                                <p>Water Park</p>
+                            </li>
+                        </ul>
                 </div>
                 
                         <div id="footer">
@@ -219,10 +245,3 @@ class Home extends Component {
     }
     
 export default Home;
-    
-                            {/* <div style={{marginTop: "500px"}}>
-                            <CustomInput onChange={this.onBtnUploadFile} label={this.state.addImageFileName} type='file'/>
-                    <Button onClick={this.uploadImage}>
-                        Upload 
-                    </Button>
-                            </div> */}

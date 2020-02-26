@@ -47,7 +47,12 @@ const Navfix = () => {
                         </li>
                         </Link>
                       
-                        <li><ConfirmationNumberIcon className="iconNav"/>Tiket Atraksi</li>
+                        <Link to="/tiketatraksi" style={{color:"black"}}>
+                        <li>
+                            <ConfirmationNumberIcon className="iconNav"/>Tiket Atraksi
+                        </li>
+                        </Link>
+
                         <li><PhotoCameraIcon className="iconNav"/>Gallery</li>
                         <li>
                             <InfoIcon className="iconNav"/>

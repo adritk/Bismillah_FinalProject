@@ -55,7 +55,7 @@ class ManageCategory extends Component {
         return this.state.listPackageCategory.map((item,index) => {
             return (
                 <tr key={index}>
-                    <td>{item.id}</td>
+                    <td>{index + 1}</td>
                     <td>{item.title}</td>
                     <td>{item.category}</td>
                     <td>

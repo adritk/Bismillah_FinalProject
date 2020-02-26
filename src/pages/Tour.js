@@ -4,9 +4,11 @@ import Axios from 'axios'
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import FlightIcon from '@material-ui/icons/Flight';
-import { MDBCol, MDBContainer, MDBRow } from 'mdbreact';
+import { MDBBtn , MDBContainer, MDBRow } from 'mdbreact';
 import {API_URL} from '../helpers/API_URL'
+import {Link} from 'react-router-dom'
 import Navfix from '../component/Navfix';
+import Footer from '../component/Footer'
 
 export default class Tour extends Component {
     state = {
@@ -16,7 +18,7 @@ export default class Tour extends Component {
     componentDidMount = () => {
         Axios.get(API_URL + '/getpackagedomestik')
         .then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
             this.setState({tour: res.data})
         })
         .catch((err) => {
@@ -24,12 +26,11 @@ export default class Tour extends Component {
         })
     }
 
-    renderTour = () => {
-       
+    renderTour = () => {  
         return(
             this.state.tour.map((val,index) => {
                     return (
-                        <div className="box-tour">
+                        <div className="box-tour" key={index}>
                         <img src = {API_URL + '/' + val.imagePath} className="image-2" alt="notfound"/> 
                             <div className="overlay-tour">
                         <div className="text-tour">{val.title}
@@ -42,32 +43,33 @@ export default class Tour extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    </div>
-                )
-            
-        })
-    )
+                                <div style={{marginTop: "35px", borderRadius: "30px"}}>
 
+                                <Link to={`/package-details?id=${val.id}`}>
+                                <input type="button" value="More Info" className="btnInfo" to="package-details" onClick={() => console.log(val.id)} />
+                                </Link>
+                                </div>
+                    </div>
+                    </div>
+                )       
+            })
+        )
     }
     render() {
         return (
-            <div>
-                 <Navfix />
-            <MDBContainer fluid className="belakang">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">Tour Domestik</li>
-                    </ol>
-                </nav>
-                <div className="belakang-2"></div>
-                    <MDBRow className="d-flex justify-content-center">
-                       {this.renderTour()}
-                    </MDBRow>
-            </MDBContainer>
+            <div style={{backgroundImage: "linear-gradient(to right, #d7d2cc 0%, #304352 100%)"}}>
+                <Navfix />
+                <div style={{paddingTop:"110px", marginBottom: "100px"}}>
+                    <MDBContainer>
+                        <MDBRow >
+                            {this.renderTour()}
+                        </MDBRow>
+                    </MDBContainer>
+                </div>
+                <div id="footer">
+                            <Footer />
+                        </div>
             </div>
-        
         )
     }
 }
