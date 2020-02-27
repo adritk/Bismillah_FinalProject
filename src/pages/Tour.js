@@ -43,11 +43,10 @@ export default class Tour extends Component {
                                 </div>
                             </div>
                         </div>
-                                <div style={{marginTop: "35px", borderRadius: "30px"}}>
-
-                                <Link to={`/package-details?id=${val.id}`}>
-                                <input type="button" value="More Info" className="btnInfo" to="package-details" onClick={() => console.log(val.id)} />
-                                </Link>
+                                <div style={{marginTop: "55px", borderRadius: "30px"}}>
+                                    <Link to={`/package-details?id=${val.id}`}>
+                                    <input type="button" value="More Info" className="btnInfo" to="package-details" onClick={() => console.log(val.id)} />
+                                    </Link>
                                 </div>
                     </div>
                     </div>
@@ -59,7 +58,7 @@ export default class Tour extends Component {
         return (
             <div style={{backgroundImage: "linear-gradient(to right, #d7d2cc 0%, #304352 100%)"}}>
                 <Navfix />
-                <div style={{paddingTop:"110px", marginBottom: "100px"}}>
+                <div style={{paddingTop:"110px", marginBottom: "100px", minHeight: "410px"}}>
                     <MDBContainer>
                         <MDBRow >
                             {this.renderTour()}

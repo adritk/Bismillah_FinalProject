@@ -14,8 +14,8 @@ class ManageProduct extends Component {
         addImageFileName : 'Select File',
         addImageFile : undefined,
         showImage : null,
-        selectedId : null
-        // itinerary: ''
+        selectedId : null,
+        itinerary: ''
     }
 
     componentDidMount() {
@@ -62,7 +62,7 @@ class ManageProduct extends Component {
             duration,
             itinerary
         }
-        if (title && harga && description && location && duration ){
+        if (title && harga && description && location && duration && itinerary){
             formData.append('data', JSON.stringify(product))
             formData.append('image', addImageFile)
             console.log(formData)
@@ -89,12 +89,14 @@ class ManageProduct extends Component {
         let description = this.description.value
         let location = this.location.value
         let duration = this.duration.value
+        let itinerary = this.state.itinerary
         let product = {
             title,
             harga,
             description,
             location,
-            duration
+            duration,
+            itinerary
         }
         Axios.put(API_URL + `/editpackage/${id}`, product)
         .then((res) => {
@@ -163,6 +165,28 @@ class ManageProduct extends Component {
                                 </TableCell>
 
                                 <TableCell>
+                                <CKEditor
+                                editor={ ClassicEditor }
+                                data="<p>Hello from CKEditor 5!</p>"
+                                onInit={ editor => {
+                                    
+                                    console.log( 'Editor is ready to use!', editor );
+                                } }
+                                onChange={ ( event, editor ) => {
+                                    const data = editor.getData();
+                                    this.setState({itinerary : data})
+                                    console.log( { event, editor, data } );
+                                } }
+                                onBlur={ ( event, editor ) => {
+                                    console.log( 'Blur.', editor );
+                                } }
+                                onFocus={ ( event, editor ) => {
+                                    console.log( 'Focus.', editor );
+                                } }
+                                />
+                                </TableCell>
+
+                                <TableCell>
                                     <img src={API_URL + '/' + item.imagePath} style={{width: "50px", height: "50px"}} alt="notfound" />
                                 </TableCell>
 
@@ -201,6 +225,10 @@ class ManageProduct extends Component {
 
                                 <TableCell>
                                    {item.duration}
+                                </TableCell>
+
+                                <TableCell>
+                                   {item.itinerary}
                                 </TableCell>
 
                                 <TableCell>
@@ -264,23 +292,23 @@ class ManageProduct extends Component {
                             <Label>
                                 Itinerary
                                 <CKEditor
-                                    editor={ ClassicEditor }
-                                    data={this.state.itinerary}
-                                    onInit={ editor => {
-                                        // You can store the "editor" and use when it is needed.
-                                        console.log( 'Editor is ready to use!', editor );
-                                    } }
-                                    onChange={ ( event, editor ) => {
-                                        const data = editor.getData();
-                                        this.setState({...this.state, itinerary: data})
-                                        console.log( { event, editor, data } );
-                                    } }
-                                    onBlur={ ( event, editor ) => {
-                                        console.log( 'Blur.', editor );
-                                    } }
-                                    onFocus={ ( event, editor ) => {
-                                        console.log( 'Focus.', editor );
-                                    } }
+                                editor={ ClassicEditor }
+                                data="<p>Hello from CKEditor 5!</p>"
+                                onInit={ editor => {
+                                    
+                                    console.log( 'Editor is ready to use!', editor );
+                                } }
+                                onChange={ ( event, editor ) => {
+                                    const data = editor.getData();
+                                    this.setState({itinerary : data})
+                                    console.log( { event, editor, data } );
+                                } }
+                                onBlur={ ( event, editor ) => {
+                                    console.log( 'Blur.', editor );
+                                } }
+                                onFocus={ ( event, editor ) => {
+                                    console.log( 'Focus.', editor );
+                                } }
                                 />
                             </Label>
                             <br></br>
@@ -322,6 +350,7 @@ class ManageProduct extends Component {
                             <TableCell>Description</TableCell>
                             <TableCell>Location</TableCell>
                             <TableCell>Duration</TableCell>
+                            <TableCell>Itinerary</TableCell>
                             <TableCell>Image</TableCell>
                             <TableCell>Actions</TableCell>
                     </TableHead>

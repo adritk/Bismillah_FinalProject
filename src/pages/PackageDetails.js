@@ -12,10 +12,11 @@ class PackageDetails extends Component {
     componentDidMount() {
         let id = this.props.location.search.split('=')[1]
         console.log(id)
-        Axios.get(API_URL + `/getpackagedomestikbyid/${id}`)
+        Axios.get(API_URL + `/getpackagebyid/${id}`)
         .then((res) => {
             console.log(res.data)
             this.setState({tour: res.data[0]})
+            console.log(this.state.tour)
         })
         .catch((err) => {
             console.log(err)
@@ -35,6 +36,7 @@ class PackageDetails extends Component {
                             {tour.title}
                             <img src={API_URL + '/' + tour.imagePath} className="image" alt="notfound"/>
                             </div>
+                            <div className="itinerary" dangerouslySetInnerHTML={{__html:`${this.state.tour.itinerary}`}}></div>
                         </div>
                     </div>
 {/* 

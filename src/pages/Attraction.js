@@ -5,6 +5,8 @@ import {MDBContainer, MDBRow } from 'mdbreact';
 import {API_URL} from '../helpers/API_URL'
 import Navfix from '../component/Navfix';
 import Footer from '../component/Footer'
+import {Link} from 'react-router-dom'
+
 class Attraction extends Component {
     state = {
         attraction : []
@@ -36,6 +38,12 @@ class Attraction extends Component {
                                 </div>
                             </div>
                         </div>
+                                <div style={{marginTop: "85px", borderRadius: "30px"}}>
+                                    <Link to={`/package-details?id=${val.id}`}>
+                                    <input type="button" value="More Info" className="btnInfo" to="package-details" onClick={() => console.log(val.id)} />
+                                    </Link>
+                                </div>
+
                     </div>
                     </div>
                 )       
@@ -47,7 +55,7 @@ class Attraction extends Component {
         return (
             <div style={{backgroundImage: "linear-gradient(to right, #d7d2cc 0%, #304352 100%)"}}>
             <Navfix />
-            <div style={{paddingTop:"110px", marginBottom: "100px"}}>
+            <div style={{paddingTop:"110px", marginBottom: "100px", minHeight: "410px"}}>
                 <MDBContainer>
                     <MDBRow >
                         {this.renderAttraction()}

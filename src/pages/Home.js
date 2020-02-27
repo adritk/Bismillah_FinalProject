@@ -7,7 +7,7 @@ import {search,shield,card,cardjawa,cardbali,cardsulawesi,cardsumatera,cardlombo
 import {API_URL} from '../helpers/API_URL'
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-
+import {Link} from 'react-router-dom'
 import Navfix from '../component/Navfix';
 import Footer from '../component/Footer'
 
@@ -46,8 +46,10 @@ class Home extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div style={{marginTop: "35px", borderRadius: "30px"}}>
+                            <div style={{marginTop: "55px", borderRadius: "30px"}}>
+                            <Link to={`/package-details?id=${val.id}`}>
                                 <input type="button" value="More Info" className="btnInfo"/>
+                            </Link>
                             </div>
                         </div>
                     </div>
@@ -72,8 +74,11 @@ class Home extends Component {
                                     <h6><LocationOnIcon fontSize="small"/>&nbsp;{val.location}</h6>
                                 </div>
                             </div>
-                            <div style={{marginTop: "140px", borderRadius: "30px"}}>
+
+                            <div style={{marginTop: "55px", borderRadius: "30px"}}>
+                            <Link to={`/package-details?id=${val.id}`}>
                                 <input type="button" value="More Info" className="btnInfo"/>
+                            </Link>
                             </div>
                         </div>
                     </div>
@@ -85,13 +90,7 @@ class Home extends Component {
         
         render() { 
             const style = {
-                // display : 'flex',
-                // flexDirection : 'row',
-                // flexWrap : 'wrap',
-                // justifyContent : 'space-between',
-                // marginLeft : "10px,"
                 marginTop: "25px", 
-                // textAlign: "center",
                 color: "white",
                 paddingBottom : 25
              }

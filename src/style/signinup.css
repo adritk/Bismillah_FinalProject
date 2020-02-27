@@ -57,4 +57,14 @@
   .white-text {
     padding-left: -300px;
     display: inline;
+   
   }
+
+  .white-text-change {
+    background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
+    /* border-radius: 40px; */
+}
+
+.gradient-change {
+    background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
+}

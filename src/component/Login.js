@@ -13,7 +13,6 @@
     MDBAnimation
   } from "mdbreact";
   import "../style/signinup.css";
-  import PersonIcon from '@material-ui/icons/Person';
 
   class Login extends React.Component {
     state = {
@@ -36,7 +35,7 @@
       return (
         <div id="classicformpage">
           <MDBView>
-            <MDBMask className="d-flex justify-content-center align-items-center gradient">
+            <MDBMask className="d-flex justify-content-center align-items-center gradient-change">
               <MDBContainer>
                 <MDBRow>
                   <MDBAnimation
@@ -56,23 +55,21 @@
                   <MDBCol md="6" xl="5" className="mb-4">
                     <MDBAnimation type="fadeInRight" delay=".3s">
                       <MDBCard id="classic-card">
-                        <MDBCardBody className="white-text">
+                        <MDBCardBody className="white-text-change">
                           <h3 className="text-center"> Login Here</h3>
                           <hr className="hr-light" />
               
-                          <MDBInput
-                            className="white-text"
-                            iconClass="white-text"
-                            label="Your name"
-                            type="text"
-                          />
-                          
-                          <MDBInput
-                            className="white-text"
-                            iconClass="white-text"
-                            label="Your password"
-                            type="password"
-                            />
+                                          
+
+                            <label htmlFor="defaultFormLoginEmailEx" className="grey-text" style={{float: 'left'}}>
+                              Your email
+                            </label>
+                            <input type="email" id="defaultFormLoginEmailEx" className="form-control" />
+                            <br />
+                            <label htmlFor="defaultFormLoginPasswordEx" className="grey-text" style={{float: 'left'}}>
+                              Your password
+                            </label>
+                            <input type="password" id="defaultFormLoginPasswordEx" className="form-control" />
 
       
                           <div className="text-center mt-4 black-text">

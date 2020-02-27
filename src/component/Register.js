@@ -35,7 +35,7 @@ class Register extends React.Component {
     return (
       <div id="classicformpage">
         <MDBView>
-          <MDBMask className="d-flex justify-content-center align-items-center gradient">
+          <MDBMask className="d-flex justify-content-center align-items-center gradient-change">
             <MDBContainer>
               <MDBRow>
                 <MDBAnimation
@@ -55,35 +55,35 @@ class Register extends React.Component {
                 <MDBCol md="6" xl="5" className="mb-4">
                   <MDBAnimation type="fadeInRight" delay=".3s">
                     <MDBCard id="classic-card">
-                      <MDBCardBody className="white-text">
+                      <MDBCardBody className="white-text-change">
                         <h3 className="text-center">Register Here</h3>
                         <hr className="hr-light" />
-                      
-                                <MDBInput 
-                                className="white-text" 
-                                iconClass="white-text" 
-                                label="Username"
-                                type="text"/>
 
-                                <MDBInput
-                                className="white-text"
-                                iconClass="white-text"
-                                label="Email"
-                                type="email"/>
+                            <label htmlFor="defaultFormLoginEmailEx" className="grey-text" style={{float: 'left'}}>
+                              Username
+                            </label>
+                            <input type="email" id="defaultFormLoginEmailEx" className="form-control" />
+                            <br />
 
-                                <MDBInput
-                                className="white-text"
-                                iconClass="white-text"
-                                label="Password"
-                                type="password"/> 
-                               
+                            <label htmlFor="defaultFormLoginPasswordEx" className="grey-text" style={{float: 'left'}}>
+                              Email
+                            </label>
+                            <input type="email" id="defaultFormLoginPasswordEx" className="form-control" />
+                            <br />
 
-                                <MDBInput
-                                className="white-text"
-                                iconClass="white-text"
-                                label="Confirm password"
-                                type="password"/>
+                            <label htmlFor="defaultFormLoginPasswordEx" className="grey-text" style={{float: 'left'}}>
+                              Password
+                            </label>
+                            <input type="password" id="defaultFormLoginPasswordEx" className="form-control" />
+                            <br />
                             
+                            <label htmlFor="defaultFormLoginPasswordEx" className="grey-text" style={{float: 'left'}}>
+                              Confirm Password
+                            </label>
+                            <input type="password" id="defaultFormLoginPasswordEx" className="form-control" />
+
+
+
                         <div className="text-center mt-4 black-text">
                           <MDBBtn color="indigo" gradient="purple" className="onBtn">Sign Up</MDBBtn>
                           <hr className="hr-light" />
