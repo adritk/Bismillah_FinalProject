@@ -32,34 +32,34 @@ const Navfix = () => {
                     </ul>
                 </div>
 
-                    <div className="second-nav">
+                    <div className="second-nav">  
                         <ul className="menu-nav"> 
 
-                        <Link to="/" style={{color:"black"}}>
-                        <li>
-                            <HomeIcon className="iconNav"/>Home
-                        </li>
-                        </Link>
+                            <Link to="/" style={{color:"black"}}>
+                            <li>
+                                <HomeIcon className="iconNav"/>Home
+                            </li>
+                            </Link>
+                            
+                            <Link to="/tourdomestik" style={{color:"black"}}>
+                            <li>
+                                <PlaceIcon className="iconNav"/>Tour Domestik
+                            </li>
+                            </Link>
                         
-                        <Link to="/tourdomestik" style={{color:"black"}}>
-                        <li>
-                            <PlaceIcon className="iconNav"/>Tour Domestik
-                        </li>
-                        </Link>
-                      
-                        <Link to="/tiketatraksi" style={{color:"black"}}>
-                        <li>
-                            <ConfirmationNumberIcon className="iconNav"/>Tiket Atraksi
-                        </li>
-                        </Link>
+                            <Link to="/tiketatraksi" style={{color:"black"}}>
+                            <li>
+                                <ConfirmationNumberIcon className="iconNav"/>Tiket Atraksi
+                            </li>
+                            </Link>
 
-                        <li><PhotoCameraIcon className="iconNav"/>Gallery</li>
-                        <li>
-                            <InfoIcon className="iconNav"/>
-                            <AnchorLink className="penting" href='#footer' style={{color:"black"}}>About Us
-                            </AnchorLink>
-                        </li>
-                        {/* <li><InfoIcon className="iconNav"/><a href="#footer" className="page-scroll">About Us</a></li> */}
+                            <li><PhotoCameraIcon className="iconNav"/>Gallery</li>
+                            <li>
+                                <InfoIcon className="iconNav"/>
+                                <AnchorLink className="penting" href='#footer' style={{color:"black"}}>About Us
+                                </AnchorLink>
+                            </li>
+                            
                         </ul>
                     </div>
             </div>

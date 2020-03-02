@@ -1,0 +1,75 @@
+.textTitle {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 36px;
+    text-transform: uppercase;
+    padding-top: 20px;
+    margin-bottom: 30px;
+}
+   
+/* STYLE KOTAK DETAILS */
+
+.kotakDetails {
+    border-radius: 20px;
+    width: 500px;
+    height: 360px;
+    margin-left: 150px;
+    box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* STYLE ICON & FONT DETAILS */
+
+.timeStyle {
+    margin-top: 20px;
+    margin-left: -240px;
+}
+
+.textDuration {
+    padding-left: 5px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.hargaStyle {
+    margin-top: 20px;
+    margin-left: -185px;
+}
+
+.textHarga {
+    padding-left: 5px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.locationStyle {
+    margin-top: 20px;
+    margin-left: -170px;
+}
+
+.textLocation {
+    padding-left: 5px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.fontItinerary{
+    margin-top: 50px;
+    margin-left: 200px;
+    float: left;
+    font-size: 26px;
+    font-weight: 500;
+}
+
+.fontItinerary span {
+    padding-left: 15px;
+}
+
+.itinerary {
+    margin-left: 255px;
+    margin-top: 120px;
+    /* border: 1px solid black; */
+    width: 1000px;
+    height: 500px;
+    text-align: justify;
+    word-wrap: break-word;
+}

@@ -104,7 +104,7 @@ class Home extends Component {
 
             
                <section className="section-2">
-                   <h1>Mengapa AnterIn ?</h1>  
+                   <h1>Mengapa Liburin ?</h1>  
                    <MDBContainer>
                        <MDBRow>
                             <Boxinfo title="Carinya Mudah" 

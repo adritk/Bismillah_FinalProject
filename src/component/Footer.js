@@ -86,7 +86,7 @@ const Footer = () => {
                             borderRadius: "2px"
                              }}
                     />
-                        <span>AnterIn merupakan penyedia jasa layanan wisata untuk para traveler yang ingin berlibur dengan nyaman, aman, dan menyenangkan. </span>
+                        <span>Liburin merupakan penyedia jasa layanan wisata untuk para traveler yang ingin berlibur dengan nyaman, aman, dan menyenangkan. </span>
                         </div>
                     </div>
                 </MDBCol>
