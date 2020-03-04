@@ -75,3 +75,11 @@
     cursor: pointer;
     font-weight: 400;
 }
+
+.textLogout {
+    color: white !important;
+}
+
+.textLogout:hover {
+    color: blue !important;
+}

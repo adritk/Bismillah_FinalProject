@@ -14,24 +14,51 @@
   } from "mdbreact";
   import "../style/signinup.css";
 
+  import {connect} from 'react-redux'
+  import {onLogin} from '../redux/action'
+  import {Link, Redirect} from 'react-router-dom'
+  
   class Login extends React.Component {
     state = {
       collapseID: ""
     };
-
+  
     toggleCollapse = collapseID => () =>
-      this.setState(prevState => ({
+    this.setState(prevState => ({
         collapseID: prevState.collapseID !== collapseID ? collapseID : ""
       }));
 
+      
+      
+      onBtnLogin = () => {
+          let username = this.refs.username.value;
+          let password = this.refs.password.value
+          if(username === '' || password === '') {
+            alert('isi semua kolom')
+          } 
+          else {
+            this.props.onLogin(username,password)
+          }
+      }
+
     render() {
+      // bawaan mdbreact
       const overlay = (
         <div
-          id="sidenav-overlay"
-          style={{ backgroundColor: "transparent" }}
-          onClick={this.toggleCollapse("navbarCollapse")}
+        id="sidenav-overlay"
+        style={{ backgroundColor: "transparent" }}
+        onClick={this.toggleCollapse("navbarCollapse")}
         />
-      );
+        );
+
+        console.log(this.props.role)
+        if(this.props.role === 'user'){
+          return(
+              <Redirect to="/">
+
+              </Redirect>
+          )
+        }
       return (
         <div id="classicformpage">
           <MDBView>
@@ -64,16 +91,17 @@
                             <label htmlFor="defaultFormLoginEmailEx" className="grey-text" style={{float: 'left'}}>
                               Your email
                             </label>
-                            <input type="email" id="defaultFormLoginEmailEx" className="form-control" />
+                            <input type="text" id="defaultFormLoginEmailEx" className="form-control" ref="username"/>
                             <br />
+
                             <label htmlFor="defaultFormLoginPasswordEx" className="grey-text" style={{float: 'left'}}>
                               Your password
                             </label>
-                            <input type="password" id="defaultFormLoginPasswordEx" className="form-control" />
+                            <input type="password" id="defaultFormLoginPasswordEx" className="form-control" ref="password" />
 
       
                           <div className="text-center mt-4 black-text">
-                          <MDBBtn gradient="purple" className="onBtn">Sign In</MDBBtn>
+                          <MDBBtn gradient="purple" className="onBtn"onClick={this.onBtnLogin}>Sign In</MDBBtn>
                             <hr className="hr-light" />
                           </div>
                           <a href="/register">Don't have an account? Sign up here</a>
@@ -90,4 +118,12 @@
     }
   }
 
-  export default Login;
+  const mapStateToProps = (state) => {
+      return {
+        verified: state.user.verified,
+        username: state.user.username,
+        email: state.user.email,
+        role: state.user.role
+      }
+  }
+  export default connect(mapStateToProps, {onLogin}) (Login);

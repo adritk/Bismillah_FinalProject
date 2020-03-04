@@ -3,6 +3,7 @@ const INITIAL_STATE = {
     username: null,
     email: '',
     token: '',
+    verified: false,
     role: ''
 }
 
@@ -14,6 +15,7 @@ export default (state = INITIAL_STATE, action) => {
                 username: action.payload.username,
                 email: action.payload.email,
                 token: action.payload.token,
+                verified: action.payload.verified,
                 role: action.payload.role
             }
         case 'LOGOUT': 

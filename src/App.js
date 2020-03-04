@@ -38,3 +38,6 @@ class App extends Component {
 }
  
 export default App;
+
+
+// console.disableYellowBox = true

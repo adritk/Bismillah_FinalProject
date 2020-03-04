@@ -1,5 +1,5 @@
-import React from 'react';
-import {Link } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import '../style/navfic.css'
 import CallIcon from '@material-ui/icons/Call';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
@@ -10,60 +10,150 @@ import PlaceIcon from '@material-ui/icons/Place';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import InfoIcon from '@material-ui/icons/Info';
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+import { logoliburin } from '../img'
+
+import { connect } from 'react-redux'
+import { Logout } from '../redux/action'
 
 
-const Navfix = () => {
-    return(
-            <div className="myNavbar">
-                <div className="first-nav">
-                    <ul className="left-nav">
-                        <li>
-                            <p><CallIcon/>&nbsp;Any Questions Call Us</p>
-                        </li>
-                    </ul>
-                    <ul className="right-nav">
-                        <Link to="/login">
-                        <li className="login">
-                            <ExitToAppIcon/>
-                             Login
-                        </li>
-                        </Link>
-                        <li><PersonIcon/>Register</li>
-                    </ul>
-                </div>
 
-                    <div className="second-nav">  
-                        <ul className="menu-nav"> 
+class Navfix extends Component {
+    onBtnLogout = () => {
+        localStorage.removeItem('token')
+        this.props.Logout()
+    }
 
-                            <Link to="/" style={{color:"black"}}>
+    render() {
+        if (this.props.role === 'user') {
+            return (
+                <div className="myNavbar">
+                    <div className="first-nav">
+                        <ul className="left-nav">
                             <li>
-                                <HomeIcon className="iconNav"/>Home
+                                <p><CallIcon />&nbsp;Any Questions Call Us</p>
                             </li>
-                            </Link>
-                            
-                            <Link to="/tourdomestik" style={{color:"black"}}>
-                            <li>
-                                <PlaceIcon className="iconNav"/>Tour Domestik
-                            </li>
-                            </Link>
-                        
-                            <Link to="/tiketatraksi" style={{color:"black"}}>
-                            <li>
-                                <ConfirmationNumberIcon className="iconNav"/>Tiket Atraksi
-                            </li>
-                            </Link>
+                            <div>
+                                <img src={logoliburin} alt="notfound" style={{ height: '65px', width: '175px', marginTop: '-10px' }} />
+                            </div>
 
-                            <li><PhotoCameraIcon className="iconNav"/>Gallery</li>
+                        </ul>
+                        <ul className="right-nav">
+                            {
+                                this.props.role
+                                    ?
+                                    `HI! ${this.props.username}`
+                                    :
+                                    <PersonIcon />
+                            }
+
                             <li>
-                                <InfoIcon className="iconNav"/>
-                                <AnchorLink className="penting" href='#footer' style={{color:"black"}}>About Us
-                                </AnchorLink>
+                                <Link to="/login">
+                                <div onClick={this.onBtnLogout} className="textLogout">
+                                    <ExitToAppIcon />
+                                    Logout
+                                </div>
+                                </Link>
                             </li>
-                            
+
                         </ul>
                     </div>
-            </div>
-            
-    )
+
+                    <div className="second-nav">
+                        <ul className="menu-nav">
+                            <Link to="/" style={{ color: "black" }}>
+                                <li>
+                                    <HomeIcon className="iconNav" />Home
+                            </li>
+                            </Link>
+
+                            <Link to="/tourdomestik" style={{ color: "black" }}>
+                                <li>
+                                    <PlaceIcon className="iconNav" />Tour Domestik
+                            </li>
+                            </Link>
+
+                            <Link to="/tiketatraksi" style={{ color: "black" }}>
+                                <li>
+                                    <ConfirmationNumberIcon className="iconNav" />Tiket Atraksi
+                            </li>
+                            </Link>
+
+                            <li><PhotoCameraIcon className="iconNav" />Gallery</li>
+                            <li>
+                                <InfoIcon className="iconNav" />
+                                <AnchorLink className="penting" href='#footer' style={{ color: "black" }}>About Us
+                                </AnchorLink>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <div className="myNavbar">
+                    <div className="first-nav">
+                        <ul className="left-nav">
+                            <li>
+                                <p><CallIcon />&nbsp;Any Questions Call Us</p>
+                            </li>
+                            <div>
+                                <img src={logoliburin} alt="notfound" style={{ height: '65px', width: '175px', marginTop: '-10px' }} />
+                            </div>
+
+                        </ul>
+                        <ul className="right-nav">
+                            <Link to="/login">
+                                <li className="login">
+                                    <ExitToAppIcon />
+                                    Login
+                                </li>
+                            </Link>
+                            <li><PersonIcon />Register</li>
+                        </ul>
+                    </div>
+
+                    <div className="second-nav">
+                        <ul className="menu-nav">
+                            <Link to="/" style={{ color: "black" }}>
+                                <li>
+                                    <HomeIcon className="iconNav" />Home
+                            </li>
+                            </Link>
+
+                            <Link to="/tourdomestik" style={{ color: "black" }}>
+                                <li>
+                                    <PlaceIcon className="iconNav" />Tour Domestik
+                            </li>
+                            </Link>
+
+                            <Link to="/tiketatraksi" style={{ color: "black" }}>
+                                <li>
+                                    <ConfirmationNumberIcon className="iconNav" />Tiket Atraksi
+                            </li>
+                            </Link>
+
+                            <li><PhotoCameraIcon className="iconNav" />Gallery</li>
+                            <li>
+                                <InfoIcon className="iconNav" />
+                                <AnchorLink className="penting" href='#footer' style={{ color: "black" }}>About Us
+                                </AnchorLink>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            )
+        }
+    }
 }
-export default Navfix
+
+
+const mapStateToProps = (state) => {
+    return {
+        username: state.user.username,
+        role: state.user.role
+    }
+}
+
+export default connect(mapStateToProps, { Logout })(Navfix)

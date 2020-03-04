@@ -19,7 +19,7 @@ class Home extends Component {
     componentDidMount = () => {
         Axios.get('http://localhost:4000/getpackage')
         .then((res) => {
-            console.log(res.data)
+            // console.log(res.data)
             this.setState({products: res.data})
         })
         .catch((err) =>{

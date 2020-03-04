@@ -3,16 +3,30 @@ import SideBarAdmin from '../component/SideBarAdmin';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 class ManageDescription extends Component {
+
     state = {
-        financialGoal: 0
+        nuArray : []
     }
 
 
+
+
+
+
+     addValue = (myArray) =>{
+        // var newArray = [];
+        for (var i = 0; i < myArray.length; i++) {
+            this.state.nuArray.push(myArray[i]);
+        };
+        return this.state.nuArray;
+    };
+
     render() { 
         return (
-            <div>
-                
-                {/* <input style={{width: '150px'}} type="text" pattern="[0-9]*" value={this.state.financialGoal}  onInput={this.handleChange.bind(this)}/> */}
+            <div style={{marginTop: "100px"}}>
+                <label>Input Nilai</label>
+                <input type="text" />
+                <input type="button" value="add" onClick={this.addValue}/>
             </div>
           );
     }

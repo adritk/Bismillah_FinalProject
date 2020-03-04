@@ -5,15 +5,16 @@
     text-transform: uppercase;
     padding-top: 20px;
     margin-bottom: 30px;
+    text-align: center;
 }
    
 /* STYLE KOTAK DETAILS */
 
 .kotakDetails {
     border-radius: 20px;
-    width: 500px;
+    width: 735px;
     height: 360px;
-    margin-left: 150px;
+    margin-left: 20px;
     box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.3);
 }
 
@@ -21,7 +22,8 @@
 
 .timeStyle {
     margin-top: 20px;
-    margin-left: -240px;
+    text-align: left;
+    padding-left: 50px;
 }
 
 .textDuration {
@@ -32,8 +34,10 @@
 
 .hargaStyle {
     margin-top: 20px;
-    margin-left: -185px;
+    text-align: left;
+    padding-left: 50px;
 }
+
 
 .textHarga {
     padding-left: 5px;
@@ -43,7 +47,8 @@
 
 .locationStyle {
     margin-top: 20px;
-    margin-left: -170px;
+    text-align: left;
+    padding-left: 50px;
 }
 
 .textLocation {
@@ -52,9 +57,46 @@
     font-weight: 700;
 }
 
+#start {
+    padding-left: 5px;
+    margin-left: 5px;
+    border: none;
+    outline: none;
+}
+
+.textjumlahTamu {
+    padding-left: 5px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.btnChange {
+    float: right;
+    margin-right: 50px;
+    margin-top: -10px;
+}
+
+.btnTambah {
+    border-radius: 20px !important;
+    width: 40px;
+    height: 30px;
+    font-size: 14pt !important;
+    padding: 0px !important;
+    margin-left: -1px !important;
+}
+
+.textTotal {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: left;
+    padding-left: 55px;
+}
+
+/* STYLES ITINERARY */
+
 .fontItinerary{
     margin-top: 50px;
-    margin-left: 200px;
+    margin-left: 228px;
     float: left;
     font-size: 26px;
     font-weight: 500;
@@ -66,9 +108,9 @@
 
 .itinerary {
     margin-left: 255px;
-    margin-top: 120px;
+    margin-top: 100px;
     /* border: 1px solid black; */
-    width: 1000px;
+    width: 710px;
     height: 500px;
     text-align: justify;
     word-wrap: break-word;

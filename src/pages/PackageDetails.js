@@ -2,85 +2,155 @@ import React, { Component } from 'react';
 import Navfix from '../component/Navfix';
 import Footer from '../component/Footer'
 import Axios from 'axios'
-import {API_URL} from '../helpers/API_URL'
-import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
+import { API_URL } from '../helpers/API_URL'
+import { MDBRow, MDBCol, MDBDatePicker } from 'mdbreact';
 import '../style/packagedetails.css'
+
+// icons
+import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import DateRangeIcon from '@material-ui/icons/DateRange';
+import PeopleIcon from '@material-ui/icons/People';
 
 class PackageDetails extends Component {
     state = {
-        tour : []
+        tour: [],
+        angka: 0
     }
 
     componentDidMount() {
         let id = this.props.location.search.split('=')[1]
         console.log(id)
         Axios.get(API_URL + `/getpackagebyid/${id}`)
-        .then((res) => {
-            console.log(res.data)
-            this.setState({tour: res.data[0]})
-            console.log(this.state.tour)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+            .then((res) => {
+                // console.log(res.data)
+                this.setState({ tour: res.data[0] })
+                console.log(this.state.tour.harga)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
-    render() { 
+    tambah = () => {
+        this.setState({ angka: this.state.angka + 1 })
+    }
+
+    kurang = () => {
+        if (this.state.angka < 1) {
+            this.setState({
+                angka: 0
+            })
+        } else {
+            this.setState({
+                angka: this.state.angka - 1
+            })
+        }
+    }
+
+    rendelTotal = () => {
+        let qty = this.state.angka
+        let price = this.state.tour
+        let total = 0
+        total += qty * price.harga
+        return (
+            total.toLocaleString()
+        )
+        // console.log(qty)
+    }
+
+    render() {
         let { tour } = this.state;
         return (
             <div>
-                <div style={{paddingBottom: 150, minHeight: "0px"}}>
+                <div style={{ paddingBottom: 150, minHeight: "0px" }}>
                     <Navfix />
                 </div>
-                    <div className='container'>
-                        <div className="row">
-                            <div className='col-4'>
-                             
-                                <img src={API_URL + '/' + tour.imagePath} className="image" alt="notfound"/>
-                            </div>
-                          
-                                <div className="kotakDetails">
+                <div className='container'>
+                    <div className="row">
+                        <div className='col-4'>
+
+                            <img src={API_URL + '/' + tour.imagePath} className="image" alt="notfound" />
+                        </div>
+
+                        <div className="kotakDetails">
+                            <MDBRow>
+                                <MDBCol md="12">
+
                                     <div className="textTitle">
-                                         {tour.title}
+                                        {tour.title}
                                     </div>
-                                    <div className="hargaStyle">
-                                        <LocalOfferIcon />
-                                        <span className="textHarga">Rp. {tour.harga}</span>
-                                    </div>
-                                    <hr style={{width: '63%'}}></hr>
+                                    <MDBRow>
+                                        <MDBCol md="6">
+                                            <div className="hargaStyle">
+                                                <LocalOfferIcon />
+                                                <span className="textHarga">Rp.{tour.harga}</span>
+                                            </div>
+                                            <hr style={{ width: '70%' }}></hr>
 
-                                    <div className="timeStyle">
-                                        <AccessTimeIcon />
-                                       <span className="textDuration"> {tour.duration} </span> 
-                                    </div>
-                                        <hr style={{width: '63%'}}></hr>
+                                            <div className="timeStyle">
+                                                <AccessTimeIcon />
+                                                <span className="textDuration"> {tour.duration} </span>
+                                            </div>
+                                            <hr style={{ width: '70%' }}></hr>
 
-                                    <div className="locationStyle">
-                                        <LocationOnIcon />
-                                       <span className="textLocation"> {tour.location} </span> 
-                                    </div>
-                                        <hr style={{width: '63%'}}></hr>
-                                </div>
-                           
+                                            <div className="locationStyle">
+                                                <LocationOnIcon />
+                                                <span className="textLocation"> {tour.location} </span>
+                                            </div>
+                                            <hr style={{ width: '70%' }}></hr>
+                                        </MDBCol>
+                                        <MDBCol md="6">
+                                            <div className="hargaStyle">
+                                                <DateRangeIcon />
+                                                <input type="date" id="start" name="trip-start" min="2020-01-01" max="2020-12-31" />
+                                            </div>
+                                            <hr style={{ width: '70%' }}></hr>
+
+                                            <div className="hargaStyle">
+                                                <PeopleIcon />
+                                                <span className="textjumlahTamu">Jumlah Tamu : {this.state.angka}</span>
+
+                                                <div className="btnChange">
+                                                    <button onClick={this.tambah} type="button" className="btn btn-outline-grey  btnTambah">+</button>
+                                                    <button onClick={this.kurang} type="button" className="btn btn-outline-grey btn-rounded waves-effect btnTambah">-</button>
+
+                                                </div>
+                                            </div>
+                                            <hr style={{ width: '70%' }}></hr>
+
+                                            <div className="textTotal">
+                                                {/* <LocalOfferIcon /> */}
+                                                <strong> Rp.
+                                                 {this.rendelTotal()}
+                                                </strong>
+                                            </div>
+                                            <hr style={{ width: '70%' }}></hr>
+                                        </MDBCol>
+                                    </MDBRow>
+                                </MDBCol>
+                            </MDBRow>
                         </div>
+
                     </div>
-                        <div className="fontItinerary">
-                            <DirectionsBusIcon fontSize='large' color="primary" style={{ fontSize: 40 }}/>
-                            <span>ITINERARY</span>
-                        </div>
-                                <div className="itinerary" dangerouslySetInnerHTML={{__html:`${this.state.tour.itinerary}`}}>
+                </div>
+                <div className="fontItinerary">
+                    <DirectionsBusIcon fontSize='large' color="primary" style={{ fontSize: 40 }} />
+                    <span>ITINERARY</span>
+                </div>
+                <div className="itinerary" dangerouslySetInnerHTML={{ __html: `${this.state.tour.itinerary}` }}>
 
-                                </div>
+                </div>
 
-                    {/* <div id="footer">
+
+                <div id="footer">
                             <Footer />
-                        </div> */}
+                        </div>
             </div>
-          );
+        );
     }
 }
- 
+
 export default PackageDetails;
