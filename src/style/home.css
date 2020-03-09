@@ -132,16 +132,7 @@
     position: relative;
 }
 
-.centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 700;
-    font-size: 20px;
-    letter-spacing: 1px;
-    font-family: 'Acme', sans-serif;
-}
+
 
 .bannerInfo {
     background: url('../img/petaindonesia.jpg') no-repeat;

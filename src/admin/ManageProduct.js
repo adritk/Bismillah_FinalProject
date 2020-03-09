@@ -4,7 +4,7 @@ import {Modal, ModalHeader, ModalBody, ModalFooter, Input,Label,Button } from 'r
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import Axios from 'axios'
-import SideBarAdmin from '../component/SideBarAdmin'
+import SideBarAdmin from './SideBarAdmin'
 import {API_URL} from '../helpers/API_URL'
 
 class ManageProduct extends Component {
@@ -45,30 +45,28 @@ class ManageProduct extends Component {
 
     UploadPackage = () => {
         let { addImageFile } = this.state;
-        console.log(addImageFile)
+        // console.log(addImageFile)
         if(addImageFile){
         let formData = new FormData()
         let title = this.title.value
         let harga = this.harga.value
-        let description = this.description.value
         let location = this.location.value
         let duration = this.duration.value
         let itinerary = this.state.itinerary
         let product = {
             title,
             harga,
-            description,
             location,
             duration,
             itinerary
         }
-        if (title && harga && description && location && duration && itinerary){
+        if (title && harga && location && duration && itinerary){
             formData.append('data', JSON.stringify(product))
             formData.append('image', addImageFile)
             console.log(formData)
             Axios.post(API_URL + '/addpackage', formData)
             .then((res) => {
-                // console.log(res)
+                console.log(res)
                 alert('add succesfull')
                 this.setState({openModal : false, showImage : null, addImageFile : undefined})
                 this.getPackage()  
@@ -78,22 +76,20 @@ class ManageProduct extends Component {
             })
                 } 
             }
-                else{
-                        alert('isi semua kolom')
-                    }
+                // else{
+                //         alert('isi semua kolom')
+                //     }
     }
 
     editPackage = (id) => {
         let title = this.title.value
         let harga = this.harga.value
-        let description = this.description.value
         let location = this.location.value
         let duration = this.duration.value
         let itinerary = this.state.itinerary
         let product = {
             title,
             harga,
-            description,
             location,
             duration,
             itinerary
@@ -146,11 +142,7 @@ class ManageProduct extends Component {
                                            /> 
                                 </TableCell>
 
-                                <TableCell>
-                                    <Input defaultValue={item.description}
-                                           innerRef= {(description) => this.description = description}
-                                           />
-                                </TableCell>
+                            
 
                                 <TableCell>
                                     <Input defaultValue= {item.location}
@@ -171,18 +163,18 @@ class ManageProduct extends Component {
                                 onInit={ editor => {
                                     
                                     console.log( 'Editor is ready to use!', editor );
-                                } }
+                                }}
                                 onChange={ ( event, editor ) => {
                                     const data = editor.getData();
                                     this.setState({itinerary : data})
                                     console.log( { event, editor, data } );
-                                } }
+                                }}
                                 onBlur={ ( event, editor ) => {
                                     console.log( 'Blur.', editor );
-                                } }
+                                }}
                                 onFocus={ ( event, editor ) => {
                                     console.log( 'Focus.', editor );
-                                } }
+                                }}
                                 />
                                 </TableCell>
 
@@ -215,9 +207,7 @@ class ManageProduct extends Component {
                                     {item.harga}
                                 </TableCell>
 
-                                <TableCell>
-                                    {item.description}                             
-                                </TableCell>
+                             
 
                                 <TableCell>
                                     {item.location}       
@@ -268,12 +258,7 @@ class ManageProduct extends Component {
                                    innerRef = {(harga) => this.harga = harga}/>
                             </Label><br></br>
 
-                            <Label>
-                                Description
-                            <Input type="text" 
-                                   style={{width: "230%"}}
-                                   innerRef = {(description) => this.description = description}/>
-                            </Label><br></br>
+                        
 
                             <Label>
                                 Location
@@ -347,7 +332,6 @@ class ManageProduct extends Component {
                             <TableCell>NO</TableCell>
                             <TableCell>Title</TableCell>
                             <TableCell>Price</TableCell>
-                            <TableCell>Description</TableCell>
                             <TableCell>Location</TableCell>
                             <TableCell>Duration</TableCell>
                             <TableCell>Itinerary</TableCell>

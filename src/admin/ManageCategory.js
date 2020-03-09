@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SideBarAdmin from '../component/SideBarAdmin';
+import SideBarAdmin from './SideBarAdmin';
 import Axios from 'axios'
 import {API_URL} from '../helpers/API_URL'
 

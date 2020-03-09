@@ -65,7 +65,7 @@ class PackageDetails extends Component {
         let { tour } = this.state;
         return (
             <div>
-                <div style={{ paddingBottom: 150, minHeight: "0px" }}>
+                <div style={{ paddingBottom: 150}}>
                     <Navfix />
                 </div>
                 <div className='container'>
@@ -75,7 +75,7 @@ class PackageDetails extends Component {
                             <img src={API_URL + '/' + tour.imagePath} className="image" alt="notfound" />
                         </div>
 
-                        <div className="kotakDetails">
+                        <div className="kotakDetails"> 
                             <MDBRow>
                                 <MDBCol md="12">
 
@@ -136,16 +136,17 @@ class PackageDetails extends Component {
 
                     </div>
                 </div>
+                
                 <div className="fontItinerary">
                     <DirectionsBusIcon fontSize='large' color="primary" style={{ fontSize: 40 }} />
                     <span>ITINERARY</span>
                 </div>
-                <div className="itinerary" dangerouslySetInnerHTML={{ __html: `${this.state.tour.itinerary}` }}>
+                <div className="itinerary" dangerouslySetInnerHTML={{ __html: `${this.state.tour.itinerary}` }} >
 
                 </div>
 
 
-                <div id="footer">
+                <div id="footer" style={{marginTop: 400}}>
                             <Footer />
                         </div>
             </div>

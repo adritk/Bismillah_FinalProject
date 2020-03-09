@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SideBarAdmin from '../component/SideBarAdmin';
+import SideBarAdmin from './SideBarAdmin';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 class ManageDescription extends Component {

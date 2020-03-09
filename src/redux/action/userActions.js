@@ -8,6 +8,7 @@ export const onLogin = (username, password) => {
             password
         })
         .then((res) => {
+    
             localStorage.setItem('token', res.data.token)
             console.log(res.data)
             dispatch({
@@ -30,5 +31,25 @@ export const onLogin = (username, password) => {
 export const Logout = () => {
     return{
         type: 'LOGOUT'
+    }
+}
+
+export const userRegister = (data) => {
+    return(dispatch) => {
+        Axios.post(API_URL + '/users/register', data)
+        .then((res) => {
+            console.log(res.data.token)
+            localStorage.setItem('token', res.data.token)
+            dispatch({
+                type: 'LOGIN',
+                payload: res.data
+            })
+        })
+        .catch((err) => {
+            localStorage.removeItem('token')
+            dispatch({
+                type: 'LOGOUT'
+            })
+        })
     }
 }

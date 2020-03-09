@@ -13,16 +13,58 @@ import {
   MDBAnimation
 } from "mdbreact";
 import "../style/signinup.css";
+import Axios from "axios";
+import { API_URL } from "../helpers/API_URL";
+import {connect} from "react-redux"
+import {userRegister} from "../redux/action"
+import {Redirect} from 'react-router-dom'
 
 class Register extends React.Component {
-  state = {
-    collapseID: ""
-  };
-
   toggleCollapse = collapseID => () =>
     this.setState(prevState => ({
       collapseID: prevState.collapseID !== collapseID ? collapseID : ""
     }));
+
+
+  state = {
+    collapseID: "",
+    char: false,
+    spec: false,
+    num: false,
+    show: false,
+    border: false
+  };
+
+  registerUser = () => {
+      let {char, spec, num} = this.state
+      let username = this.refs.username.value
+      let email = this.refs.email.value
+      let password = this.refs.password.value
+      let confirmPass = this.refs.confirmPass.value
+
+      if (username && email && password && confirmPass) {
+          if (password === confirmPass) {
+              // alert('password match')
+              let data = {
+                username,
+                email,
+                password,
+                role : 'user'
+              }
+              alert('register success')
+              this.props.userRegister(data)
+          } 
+          else if (password !== confirmPass) 
+          {
+            alert('password must be same')
+          }
+      }
+      else 
+      {
+        alert('please fill all this form')
+      }
+}
+  
 
   render() {
     const overlay = (
@@ -32,6 +74,15 @@ class Register extends React.Component {
         onClick={this.toggleCollapse("navbarCollapse")}
       />
     );
+
+    if(this.props.username) {
+      return (
+        <Redirect to="/login">
+x`
+        </Redirect>
+      )
+    }
+    
     return (
       <div id="classicformpage">
         <MDBView>
@@ -62,30 +113,30 @@ class Register extends React.Component {
                             <label htmlFor="defaultFormLoginEmailEx" className="grey-text" style={{float: 'left'}}>
                               Username
                             </label>
-                            <input type="email" id="defaultFormLoginEmailEx" className="form-control" />
+                            <input type="text" id="defaultFormLoginEmailEx" className="form-control" ref="username" />
                             <br />
 
                             <label htmlFor="defaultFormLoginPasswordEx" className="grey-text" style={{float: 'left'}}>
                               Email
                             </label>
-                            <input type="email" id="defaultFormLoginPasswordEx" className="form-control" />
+                            <input type="text" id="defaultFormLoginPasswordEx" className="form-control" ref="email" />
                             <br />
 
                             <label htmlFor="defaultFormLoginPasswordEx" className="grey-text" style={{float: 'left'}}>
                               Password
                             </label>
-                            <input type="password" id="defaultFormLoginPasswordEx" className="form-control" />
+                            <input type="password" id="defaultFormLoginPasswordEx" className="form-control" ref="password" />
                             <br />
                             
                             <label htmlFor="defaultFormLoginPasswordEx" className="grey-text" style={{float: 'left'}}>
                               Confirm Password
                             </label>
-                            <input type="password" id="defaultFormLoginPasswordEx" className="form-control" />
+                            <input type="password" id="defaultFormLoginPasswordEx" className="form-control" ref="confirmPass" />
 
 
 
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn color="indigo" gradient="purple" className="onBtn">Sign Up</MDBBtn>
+                          <MDBBtn color="indigo" gradient="purple" className="onBtn" onClick={this.registerUser}>Sign Up</MDBBtn>
                           <hr className="hr-light" />
                         </div>
                         <a href="/login">Have an account? Sign in here</a>
@@ -102,4 +153,10 @@ class Register extends React.Component {
   }
 }
 
-export default Register;
+const mapStateToProps = (state) => {
+    return {
+        username: state.user.username
+    }
+} 
+
+export default connect(mapStateToProps, {userRegister}) (Register);

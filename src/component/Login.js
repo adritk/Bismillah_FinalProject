@@ -26,9 +26,7 @@
     toggleCollapse = collapseID => () =>
     this.setState(prevState => ({
         collapseID: prevState.collapseID !== collapseID ? collapseID : ""
-      }));
-
-      
+      }));  
       
       onBtnLogin = () => {
           let username = this.refs.username.value;
