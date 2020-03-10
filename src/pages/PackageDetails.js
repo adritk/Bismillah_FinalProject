@@ -4,6 +4,7 @@ import Footer from '../component/Footer'
 import Axios from 'axios'
 import { API_URL } from '../helpers/API_URL'
 import { MDBRow, MDBCol, MDBDatePicker } from 'mdbreact';
+import { Button } from '@material-ui/core';
 import '../style/packagedetails.css'
 
 // icons
@@ -61,6 +62,28 @@ class PackageDetails extends Component {
         // console.log(qty)
     }
 
+    addToCart = () => {
+        let {angka, tour} = this.state
+        let data = {
+            quantity : angka,
+            productId : tour.id,
+            harga : tour.harga,
+            total: tour.harga * angka
+        }
+        const token = localStorage.getItem('token')
+        if(token) {
+            const headers = {
+                headers : {'Authorization' : `Bearer ${token}`}
+            }
+            Axios.post(API_URL + '/addtocart', data, headers)
+            .then((res) => {
+                alert('Bokking Successfull')
+                this.setState({redirect: true})
+            })
+        }
+        console.log(data)
+    }
+
     render() {
         let { tour } = this.state;
         return (
@@ -86,7 +109,7 @@ class PackageDetails extends Component {
                                         <MDBCol md="6">
                                             <div className="hargaStyle">
                                                 <LocalOfferIcon />
-                                                <span className="textHarga">Rp.{tour.harga}</span>
+                                                <span className="textHarga">Rp. {parseInt(tour.harga).toLocaleString()}</span>
                                             </div>
                                             <hr style={{ width: '70%' }}></hr>
 
@@ -128,6 +151,9 @@ class PackageDetails extends Component {
                                                 </strong>
                                             </div>
                                             <hr style={{ width: '70%' }}></hr>
+                                            <Button variant="contained" color='primary' onClick={() => this.addToCart()} id="btn" >
+                                                Add To Cart
+                                            </Button>
                                         </MDBCol>
                                     </MDBRow>
                                 </MDBCol>

@@ -10,6 +10,8 @@ import PlaceIcon from '@material-ui/icons/Place';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import InfoIcon from '@material-ui/icons/Info';
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { Button } from '@material-ui/core'
 import { logoliburin } from '../img'
 
 import { connect } from 'react-redux'
@@ -47,6 +49,29 @@ class Navfix extends Component {
                             }
 
                             <li>
+                                {/* <div>
+                                <Link to="/cartuser">
+                                <Button onClick={this.onBtnCheckout} style={{marginTop: '0px', color: 'white' }} to="/cartuser">
+                                <ShoppingCartIcon>
+                                </ShoppingCartIcon>
+                                    Checkout
+                                </Button>
+                                </Link>
+                                </div> */}
+                                <Link to={{
+                                    pathname: '/cartuser', 
+                                    state: {
+                                        id: this.props.id
+                                    }}}>
+                                <div className="textLogout">
+                                <ShoppingCartIcon />
+                                    Cart
+
+                                </div>
+                                </Link>
+                            </li>
+
+                            <li>
                                 <Link to="/login">
                                 <div onClick={this.onBtnLogout} className="textLogout">
                                     <ExitToAppIcon />
@@ -54,6 +79,8 @@ class Navfix extends Component {
                                 </div>
                                 </Link>
                             </li>
+
+                           
 
                         </ul>
                     </div>
@@ -152,7 +179,8 @@ class Navfix extends Component {
 const mapStateToProps = (state) => {
     return {
         username: state.user.username,
-        role: state.user.role
+        role: state.user.role,
+        id: state.user.id
     }
 }
 

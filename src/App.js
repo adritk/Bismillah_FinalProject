@@ -1,5 +1,8 @@
-import React, {Component} from 'react';
-import {Route} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+import NotFound from './component/NotFound'
+import { connect } from 'react-redux'
+import { onLogin } from './redux/action'
 import './App.css';
 
 // ROUTE ADMIN
@@ -17,35 +20,64 @@ import Register from './component/Register';
 import Login from './component/Login';
 import PackageDetails from './pages/PackageDetails';
 import Verified from './pages/Verified'
+import CartUser from './pages/CartUser'
 
 
 class App extends Component {
+
+  render() {
+    if (this.props.role === 'user') {
+      return (
+        <div className="App">
+          <Route path='/' component={Home} exact />
+          <Route path='/tourdomestik' component={Tour} />
+          <Route path='/tiketatraksi' component={Attraction} />
+          <Route path='/package-details' component={PackageDetails} />
+          <Route path='/verified' component={Verified} />
+          <Route path='/cartuser' component={CartUser} />
+          </div>
+          )
+        } 
+        
+        else if(this.props.role === 'admin'){
+            return (
+          <div className="App">
+            <Route path='/manageproduct' component={ManageProduct} />
+            <Route path='/managecategory' component={ManageCategory} />
+            <Route path='/managedescription' component={ManageDescription} />
+            <Route path='/admin' component={Admin} />
+            <Route path='/login' component={Login} />
+            <Route path='/register' component={Register} />
+            <Route path='/customers' component={Customers} />
+          </div>
+
+            )
+        } else {
+          return (
+          <div>
+            <Route path='/login' component={Login} />
+            <Route path='/register' component={Register} />
+            <Route path='/' component={Home} exact />
+            <Route path='/tourdomestik' component={Tour} />
+            <Route path='/tiketatraksi' component={Attraction} />
+            <Route path='/package-details' component={PackageDetails} />
+          </div>
+          )
+        }
+        
   
-  render() { 
-    return ( 
-      <div className="App">
-        {/* path user */}
-       <Route path='/' component={Home} exact />
-       <Route path='/tourdomestik' component={Tour} />
-       <Route path='/tiketatraksi' component={Attraction} />
-       <Route path='/package-details' component={PackageDetails} />
-       <Route path='/verified' component={Verified} />
 
-
-       {/* path admin */}
-       <Route path='/manageproduct' component={ManageProduct} />
-       <Route path='/managecategory' component={ManageCategory} />
-       <Route path='/managedescription' component={ManageDescription} />
-       <Route path='/admin' component={Admin} />
-       <Route path='/login' component={Login} />
-       <Route path='/register' component={Register} />
-       <Route path='/customers' component={Customers} />
-      </div>
-     );
-  }
-}
- 
-export default App;
-
-
+        
+       }
+     }
+     
+const mapStateToProps = (state) => {
+  return {
+            role: state.user.role
+      }
+    }
+    
+export default connect(mapStateToProps, {onLogin}) (App);
+          
+          
 // console.disableYellowBox = true

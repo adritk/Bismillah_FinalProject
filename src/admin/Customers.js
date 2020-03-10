@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Axios from 'axios'
 import { MDBTable, MDBTableBody, MDBTableHead, MDBContainer } from 'mdbreact';
 import { API_URL } from '../helpers/API_URL';
+import SideBarAdmin from './SideBarAdmin'
 
 class Customer extends Component {
     state = {
@@ -34,6 +35,9 @@ class Customer extends Component {
     }
     render() {
         return (
+        <div>
+
+            <SideBarAdmin />
             <MDBContainer>
             <MDBTable striped>
                 <MDBTableHead>
@@ -49,6 +53,7 @@ class Customer extends Component {
                 </MDBTableBody>
             </MDBTable>
             </MDBContainer>
+        </div>
         );
     }
 }

@@ -175,6 +175,7 @@ class ManageProduct extends Component {
                                 onFocus={ ( event, editor ) => {
                                     console.log( 'Focus.', editor );
                                 }}
+                                defaultValue={this.state.itinerary}
                                 />
                                 </TableCell>
 
