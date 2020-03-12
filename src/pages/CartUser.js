@@ -24,9 +24,8 @@ class CartUser extends Component {
 
     getAllCart = () => {
         let id = this.props.location.state.id
-        Axios.get(API_URL + `/getallcart/${id}`)
+        Axios.get(API_URL + `/getallcartbyid/${id}`)
             .then((res) => {
-                console.log(res.data)
                 this.setState({ data: res.data })
             })
             .catch((err) => {
@@ -34,6 +33,7 @@ class CartUser extends Component {
             })
     }
 
+    
     onBtnCancel = (id) => {
         Axios.delete(API_URL + `/deletecart/${id}`)
             .then((res) => {
@@ -44,20 +44,37 @@ class CartUser extends Component {
             })
     }
 
+    onBtnCheckout = () => {
+        let {data} = this.state
+        console.log(data)
+        const token = localStorage.getItem('token')
+        if(token) {
+            const headers = {
+                headers : {'Authorization' : `Bearer ${token}`}
+            }
+            Axios.post(API_URL + '/history', data, headers)
+            .then((res) => {
+                alert('Checkout Success')
+            })
+        }
+    }
+
 
     renderCart = () => {
         let { data } = this.state
         return data.map((item, index) => {
+            // console.log(data[0].status)
             return (
                 <tr key={item.id}>
                     <td>{index + 1}</td>
                     <td>{item.title}</td>
                     <td>{item.quantity} Person</td>
-                    <td>{parseInt(item.total).toLocaleString()}</td>
-
-                    <td>{item.date}</td>
+                    <td>Rp. {parseInt(item.total).toLocaleString()}</td>
+                    <td>{item.departure.split('T')[0]}</td>
+                    <td>{item.status}</td>
                     <td>
-                        <Button color="secondary" onClick={() => this.onBtnCancel(item.id)}>Cancel</Button>
+                        <Button style={{marginRight: '5px'}} color="primary" variant="outlined" onClick={() => this.onBtnCheckout(item.id)}>Book</Button>
+                        <Button color="secondary" variant="outlined" onClick={() => this.onBtnCancel(item.id)}>Cancel</Button>
                     </td>
                 </tr>
             )
@@ -75,7 +92,8 @@ class CartUser extends Component {
                                 <td>Paket Tour</td>
                                 <td>Quantity</td>
                                 <td>Total Price</td>
-                                <td>Transaction Date</td>
+                                <td>Departure</td>
+                                <td>Status</td>
                                 <td>Action</td>
                             </tr>
                         </MDBTableHead>

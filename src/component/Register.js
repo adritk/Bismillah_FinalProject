@@ -3,18 +3,14 @@ import {
   MDBMask,
   MDBRow,
   MDBCol,
-  MDBIcon,
   MDBBtn,
   MDBView,
   MDBContainer,
   MDBCard,
   MDBCardBody,
-  MDBInput,
   MDBAnimation
 } from "mdbreact";
 import "../style/signinup.css";
-import Axios from "axios";
-import { API_URL } from "../helpers/API_URL";
 import {connect} from "react-redux"
 import {userRegister} from "../redux/action"
 import {Redirect} from 'react-router-dom'
@@ -27,16 +23,16 @@ class Register extends React.Component {
 
 
   state = {
-    collapseID: "",
-    char: false,
-    spec: false,
-    num: false,
-    show: false,
-    border: false
+    collapseID: ""
+    // char: false,
+    // spec: false,
+    // num: false,
+    // show: false,
+    // border: false
   };
 
   registerUser = () => {
-      let {char, spec, num} = this.state
+      // let {char, spec, num} = this.state
       let username = this.refs.username.value
       let email = this.refs.email.value
       let password = this.refs.password.value
@@ -67,13 +63,13 @@ class Register extends React.Component {
   
 
   render() {
-    const overlay = (
-      <div
-        id="sidenav-overlay"
-        style={{ backgroundColor: "transparent" }}
-        onClick={this.toggleCollapse("navbarCollapse")}
-      />
-    );
+    // const overlay = (
+    //   <div
+    //     id="sidenav-overlay"
+    //     style={{ backgroundColor: "transparent" }}
+    //     onClick={this.toggleCollapse("navbarCollapse")}
+    //   />
+    // );
 
     if(this.props.username) {
       return (

@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import {
-MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
-MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
+MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse
 } from "mdbreact";
-import { BrowserRouter as Router } from 'react-router-dom';
+import PersonIcon from '@material-ui/icons/Person';
+
+import { connect } from 'react-redux'
+import { Logout } from '../redux/action'
+
+import {Link} from 'react-router-dom'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 class SideBarAdmin extends Component {
 state = {
@@ -14,8 +19,15 @@ toggleCollapse = () => {
   this.setState({ isOpen: !this.state.isOpen });
 }
 
+onBtnLogout = () => {
+  localStorage.removeItem('token')
+  this.props.Logout()
+}
+
 render() {
-  return (
+  if(this.props.role === 'admin') {
+
+    return (
       <MDBNavbar color="indigo" dark expand="md">
         <MDBNavbarBrand>
           <strong className="white-text">Navbar</strong>
@@ -33,7 +45,7 @@ render() {
               <MDBNavLink to="/managecategory">Manage Category</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
-              <MDBNavLink to="/managedescription">Manage Description</MDBNavLink>
+              <MDBNavLink to="/allcart">Cart</MDBNavLink>
             </MDBNavItem>
             <MDBNavItem>
               <MDBNavLink to="/customers">Customers</MDBNavLink>
@@ -41,12 +53,36 @@ render() {
         
           </MDBNavbarNav>
           <MDBNavbarNav right>
+                  <div style={{color: "white", marginRight: 10}}>
+                      {
+                        this.props.role
+                        ?
+                        `HI! ${this.props.username}`
+                        :
+                        <PersonIcon />
+                      }
+                      </div>
 
+                                <Link to="/login">
+                                <div onClick={this.onBtnLogout} className="textLogout">
+                                    <ExitToAppIcon />
+                                    Logout
+                                </div>
+                                </Link>
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBNavbar>
     );
   }
+  }
 }
 
-export default SideBarAdmin;
+const mapStateToProps = (state) => {
+  return {
+    username: state.user.username,
+      role: state.user.role,
+      id: state.user.id
+  }
+}
+
+export default connect(mapStateToProps, {Logout}) (SideBarAdmin);

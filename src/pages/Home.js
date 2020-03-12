@@ -14,24 +14,36 @@ import CardCity from '../component/CardCity'
 
 class Home extends Component {
     state = {
-        products: []
+        allPackages: [],
+        tourDomestik: [],
+        themePark: [],
+        waterPark: [],
+        atraksi: []
     }
 
-    componentDidMount = () => {
-        Axios.get('http://localhost:4000/getpackage')
-            .then((res) => {
-                // console.log(res.data)
-                this.setState({ products: res.data })
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+    async componentDidMount() {
+        // Axios.get('http://localhost:4000/getpackage')
+        //     .then((res) => {
+        //         console.log(res.data)
+        //         this.setState({ allPackages: res.data })
+        //     })
+        //     .catch((err) => {
+        //         console.log(err)
+        //     })
+        const allPackages = await Axios.get(API_URL + '/getpackage')
+        const tourDomestik = await Axios.get(API_URL + '/getpackagedomestik')
+        const waterPark = await Axios.get(API_URL + '/getwaterpark')
+        const themePark = await Axios.get(API_URL + '/getthemepark')
+        this.setState({allPackages: allPackages.data})
+        this.setState({tourDomestik: tourDomestik.data})
+        this.setState({waterPark: waterPark.data})
+        this.setState({themePark: themePark.data})
     }
 
 
     renderTour = () => {
         return (
-            this.state.products.map((val, index) => {
+            this.state.allPackages.map((val, index) => {
                 if (val.id == 1 || val.id == 2 || val.id == 3) {
                     return (
                         <div className="box-2" key={index}>
@@ -62,7 +74,7 @@ class Home extends Component {
 
     renderAttraction = () => {
         return (
-            this.state.products.map((val, index) => {
+            this.state.allPackages.map((val, index) => {
                 if (val.id == 4 || val.id == 5 || val.id == 6) {
                     return (
                         <div className="box-2" key={index}>
@@ -161,6 +173,20 @@ class Home extends Component {
 
                 </section>
                 <div className="bannerInfo">
+                    <div className="countPackages">
+                            <span style={{marginRight: "150px"}}>
+                              {this.state.tourDomestik.length}
+                            </span>
+                            
+                            <span style={{marginRight: "150px", marginLeft: "40px"}}>
+                                {this.state.themePark.length}
+                            </span>
+
+                            <span style={{marginLeft: "40px"}}>
+                                {this.state.waterPark.length}
+                            </span>
+                    </div>
+
                     <ul>
                         <li>
                             <p>Paket Tour</p>

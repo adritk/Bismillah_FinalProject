@@ -15,7 +15,7 @@ import {
 import "../style/signinup.css";
 
 import { connect } from 'react-redux'
-import { onLogin } from '../redux/action'
+import { onLogin} from '../redux/action'
 import { Link, Redirect } from 'react-router-dom'
 
 class Login extends React.Component {
@@ -30,7 +30,7 @@ class Login extends React.Component {
 
   onBtnLogin = () => {
     let username = this.refs.username.value;
-    let password = this.refs.password.value
+    let password = this.refs.password.value;
     if (username === '' || password === '') {
       alert('isi semua kolom')
     }
@@ -50,15 +50,15 @@ class Login extends React.Component {
     );
 
     // console.log(this.props.role)
-    if (this.props.role === 'user') {
+    if (this.props.role === 'admin') {
       return (
-        <Redirect to="/">
+        <Redirect to="/admin">
 
         </Redirect>
       )
-    } else if (this.props.role === 'admin') {
+    } else if (this.props.role === 'user') {
       return (
-        <Redirect to="/admin">
+        <Redirect to="/">
 
         </Redirect>
       )
@@ -130,4 +130,4 @@ const mapStateToProps = (state) => {
     role: state.user.role
   }
 }
-export default connect(mapStateToProps, { onLogin })(Login);
+export default connect(mapStateToProps, { onLogin})(Login);

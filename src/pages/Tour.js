@@ -45,7 +45,7 @@ export default class Tour extends Component {
                         </div>
                                 <div style={{marginTop: "55px", borderRadius: "30px"}}>
                                     <Link to={`/package-details?id=${val.id}`}>
-                                    <input type="button" value="More Info" className="btnInfo" to="package-details" onClick={() => console.log(val.id)} />
+                                    <input type="button" value="More Info" className="btnInfo" to="package-details" />
                                     </Link>
                                 </div>
                     </div>

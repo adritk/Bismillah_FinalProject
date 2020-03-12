@@ -3,7 +3,8 @@ import Navfix from '../component/Navfix';
 import Footer from '../component/Footer'
 import Axios from 'axios'
 import { API_URL } from '../helpers/API_URL'
-import { MDBRow, MDBCol, MDBDatePicker } from 'mdbreact';
+import { MDBRow, MDBCol } from 'mdbreact';
+import {Redirect} from 'react-router-dom'
 import { Button } from '@material-ui/core';
 import '../style/packagedetails.css'
 
@@ -18,17 +19,17 @@ import PeopleIcon from '@material-ui/icons/People';
 class PackageDetails extends Component {
     state = {
         tour: [],
-        angka: 0
+        angka: 0,
     }
 
     componentDidMount() {
         let id = this.props.location.search.split('=')[1]
-        console.log(id)
+        // console.log(id)
         Axios.get(API_URL + `/getpackagebyid/${id}`)
             .then((res) => {
                 // console.log(res.data)
                 this.setState({ tour: res.data[0] })
-                console.log(this.state.tour.harga)
+                // console.log(this.state.tour.harga)
             })
             .catch((err) => {
                 console.log(err)
@@ -68,20 +69,30 @@ class PackageDetails extends Component {
             quantity : angka,
             productId : tour.id,
             harga : tour.harga,
-            total: tour.harga * angka
+            total: tour.harga * angka,
+            departure : this.refs.departure.value,
+            status : "Unpaid"
         }
+        // console.log(data)
+        
         const token = localStorage.getItem('token')
         if(token) {
             const headers = {
                 headers : {'Authorization' : `Bearer ${token}`}
             }
             Axios.post(API_URL + '/addtocart', data, headers)
+            // console.log(token)
             .then((res) => {
                 alert('Bokking Successfull')
-                this.setState({redirect: true})
             })
+        } else {
+            return (
+                <Redirect to="/login">
+
+                </Redirect>
+            )
         }
-        console.log(data)
+        // console.log(data)
     }
 
     render() {
@@ -128,7 +139,9 @@ class PackageDetails extends Component {
                                         <MDBCol md="6">
                                             <div className="hargaStyle">
                                                 <DateRangeIcon />
-                                                <input type="date" id="start" name="trip-start" min="2020-01-01" max="2020-12-31" />
+
+                                                <input type="date" id="start" name="trip-start" min="2020-01-01" max="2020-12-31" ref="departure"/>
+
                                             </div>
                                             <hr style={{ width: '70%' }}></hr>
 

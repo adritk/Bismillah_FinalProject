@@ -146,21 +146,31 @@
 
 .bannerInfo p {
     height: 50px;
-    padding: 10px 3px;
-    width: 140px;
-    color: #fff;
+    padding: 10px 10px 10px 10px;
+    width: 130px;
+    color: #2980B9;
     border-radius: 30px;
-    background-color:#304352;
+    background-color: white;
 }
 
 .bannerInfo li{
     display: inline-flex;
-    padding: 160px 40px;
+    padding: 0px 40px;
     font-size: 24px;
 }
 
 .bannerInfo ul {
     margin-left: 330px;
+}
+
+.countPackages {
+    padding-top: 100px;
+    color: white;
+    flex-direction: row;
+    display: flex;
+    padding-left: 47%;
+    font-weight: 900;
+    font-size: 30px;
 }
 
 /* #footer {

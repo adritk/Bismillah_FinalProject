@@ -34,6 +34,33 @@ export const Logout = () => {
     }
 }
 
+export const KeepLogin = () => {
+    return(dispatch) => {
+        const token = localStorage.getItem('token');
+        console.log(token);
+        if(token){
+            const headers = {
+                headers : {
+                    'Authorization' : `Bearer ${token}`
+                }
+            }
+            Axios.post(API_URL + '/users/keeplogin', {}, headers)
+            .then((res) => {
+                console.log(res.data.verified)
+                dispatch({
+                    type : 'LOGIN',
+                    payload : res.data
+                })
+            })
+            .catch((err) => {
+                dispatch({
+                    type : 'LOGOUT'
+                })
+            })
+        }
+    }
+}
+
 export const userRegister = (data) => {
     return(dispatch) => {
         Axios.post(API_URL + '/users/register', data)

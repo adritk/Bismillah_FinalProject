@@ -23,6 +23,7 @@
 
   ul li {
       list-style: none;
+      /* margin-left: 50px; */
   }
 
   .left-nav {

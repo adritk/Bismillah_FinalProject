@@ -21,10 +21,9 @@ class Customer extends Component {
 
     renderUsers = () => {
         let {users} = this.state
-        console.log(users)
         return users.map((item, index) => {
             return (
-                <tr>
+                <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{item.username}</td>
                 <td>{item.email}</td>
@@ -36,10 +35,11 @@ class Customer extends Component {
     render() {
         return (
         <div>
-
             <SideBarAdmin />
-            <MDBContainer>
-            <MDBTable striped>
+            <div className="backgroundCart">
+
+            {/* <MDBContainer> */}
+            <MDBTable bordered>
                 <MDBTableHead>
                     <tr>
                         <th>No</th>
@@ -52,7 +52,8 @@ class Customer extends Component {
                     {this.renderUsers()}
                 </MDBTableBody>
             </MDBTable>
-            </MDBContainer>
+            {/* </MDBContainer> */}
+            </div>
         </div>
         );
     }

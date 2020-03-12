@@ -11,7 +11,6 @@ import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
 import InfoIcon from '@material-ui/icons/Info';
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { Button } from '@material-ui/core'
 import { logoliburin } from '../img'
 
 import { connect } from 'react-redux'
@@ -49,15 +48,6 @@ class Navfix extends Component {
                             }
 
                             <li>
-                                {/* <div>
-                                <Link to="/cartuser">
-                                <Button onClick={this.onBtnCheckout} style={{marginTop: '0px', color: 'white' }} to="/cartuser">
-                                <ShoppingCartIcon>
-                                </ShoppingCartIcon>
-                                    Checkout
-                                </Button>
-                                </Link>
-                                </div> */}
                                 <Link to={{
                                     pathname: '/cartuser', 
                                     state: {
