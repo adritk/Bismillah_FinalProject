@@ -21,6 +21,7 @@ import Login from './component/Login';
 import PackageDetails from './pages/PackageDetails';
 import Verified from './pages/Verified'
 import CartUser from './pages/CartUser'
+import CheckoutUser from './pages/CheckoutUser'
 
 
 class App extends Component {
@@ -49,6 +50,7 @@ class App extends Component {
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='/customers' component={Customers} />
+        <Route path='/checkout' component={CheckoutUser} />
         <Route path='*' component={NotFound} />
         </Switch>
       </div>

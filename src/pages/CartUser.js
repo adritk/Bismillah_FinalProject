@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import { API_URL } from '../helpers/API_URL'
 import Axios from 'axios'
 import '../style/cartuser.css'
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 // IMPORT BOOTSTRAP
 import { MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact'
@@ -46,7 +48,7 @@ class CartUser extends Component {
 
     onBtnCheckout = () => {
         let {data} = this.state
-        console.log(data)
+        // console.log(data)
         const token = localStorage.getItem('token')
         if(token) {
             const headers = {
@@ -63,7 +65,7 @@ class CartUser extends Component {
     renderCart = () => {
         let { data } = this.state
         return data.map((item, index) => {
-            // console.log(data[0].status)
+            // console.log(data[1])
             return (
                 <tr key={item.id}>
                     <td>{index + 1}</td>
@@ -73,7 +75,17 @@ class CartUser extends Component {
                     <td>{item.departure.split('T')[0]}</td>
                     <td>{item.status}</td>
                     <td>
-                        <Button style={{marginRight: '5px'}} color="primary" variant="outlined" onClick={() => this.onBtnCheckout(item.id)}>Book</Button>
+                        <Link to={{
+                            pathname: '/checkout',
+                            state: {
+                                idUser : this.props.id,
+                                idCart : item.id,
+                                idProduct : item.productId
+                            }
+                        }}>
+                        <Button style={{marginRight: '5px'}} color="primary" variant="outlined" onClick={() => this.onBtnCheckout(item.id) } to="/checkout">Book</Button>
+                        </Link>
+
                         <Button color="secondary" variant="outlined" onClick={() => this.onBtnCancel(item.id)}>Cancel</Button>
                     </td>
                 </tr>
@@ -81,6 +93,7 @@ class CartUser extends Component {
         })
     }
     render() {
+        console.log(this.state.data)
         return (
             <div>
                 <Navfix />
@@ -108,4 +121,10 @@ class CartUser extends Component {
     }
 }
 
-export default CartUser
+const mapStateToProps = (state) => {
+    return {
+        id: state.user.id
+    }
+}
+
+export default connect(mapStateToProps)(CartUser)

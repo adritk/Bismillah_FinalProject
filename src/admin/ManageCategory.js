@@ -18,6 +18,7 @@ class ManageCategory extends Component {
         this.getListProduct()
     }
 
+    // ambil semua data products
     getListProduct = () => {
         Axios.get(API_URL + '/getpackage')
         .then((res) => {
@@ -28,6 +29,7 @@ class ManageCategory extends Component {
         })
     }
 
+    // ambil data category paling leaf dan ga punya child
     getListCategory = () => {
         Axios.get(API_URL + '/category/getcategoryleaf')
         .then((res) => {
@@ -38,6 +40,7 @@ class ManageCategory extends Component {
         })
     }
 
+    // ambil semua data products yang sudah di kategorikan
     getListPackageCategory = () => {
         Axios.get(API_URL + '/pacagakecat/getallpackagecat')
         .then((res) => {
@@ -50,6 +53,16 @@ class ManageCategory extends Component {
             console.log(err)
         })
     }
+
+    // hapus products dari category
+    onBtnDeleteClick = (id) => {
+        Axios.delete(API_URL + `/pacagakecat/deletepackagecat/${id}`)
+        .then((res) => {
+            alert('delete successfull')
+            this.getListPackageCategory()
+        })
+    }
+
 
     renderListPackageCategory = () => {
         return this.state.listPackageCategory.map((item,index) => {
@@ -83,7 +96,6 @@ class ManageCategory extends Component {
     }
 
     btnAddPackagecat = () => {
-       
         var body = {
             productId: this.state.addProductId,
             categoryId: this.state.addCategoryId
