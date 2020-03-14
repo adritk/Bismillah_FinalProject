@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import NotFound from './component/NotFound'
 import { connect } from 'react-redux'
-import { onLogin } from './redux/action'
+import { onLogin, KeepLogin } from './redux/action'
 import './App.css';
+
 
 // ROUTE ADMIN
 import ManageProduct from './admin/ManageProduct'
@@ -11,6 +12,7 @@ import ManageCategory from './admin/ManageCategory'
 import Admin from './admin/Admin'
 import Customers from './admin/Customers'
 import AllCartUser from './admin/AllCartUser';
+import TransactionUser from './admin/AllTransactionUser';
 
 // ROUTE USERS;
 import Home from './pages/Home';
@@ -26,12 +28,12 @@ import CheckoutUser from './pages/CheckoutUser'
 
 class App extends Component {
 
-  // componentDidMount() {
-  //   let token = localStorage.getItem('token')
-  //   if(token) {
-  //     this.props.KeepLogin()
-  //   }
-  // }
+  componentDidMount() {
+    let token = localStorage.getItem('token')
+    if(token) {
+      this.props.KeepLogin()
+    }
+  }
 
   render() {
     if (this.props.role === 'user') {
@@ -67,7 +69,8 @@ class App extends Component {
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
         <Route path='/customers' component={Customers} />
-        <Route paath='/allcart' component={AllCartUser} />
+        <Route path='/allcart' component={AllCartUser} />
+        <Route path='/transactionusers' component={TransactionUser} />
         <Route path='*' component={NotFound} />
       </Switch>
       </div>
@@ -101,7 +104,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { onLogin})(App);
+export default connect(mapStateToProps, { KeepLogin})(App);
 
 
 // console.disableYellowBox = true

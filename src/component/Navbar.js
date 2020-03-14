@@ -1,60 +1,44 @@
-import React, { Component } from 'react'
-import '../style/navbar.css'
-import { Link} from 'react-router-dom';
+// import { useBooleanKnob } from '@stardust-ui/docs-components'
+// import React from 'react'
+// import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
 
+// const NavbarPage = () => {
+//   const [visible, setVisible] = useBooleanKnob({ name: 'visible' })
 
-class NavbarPage extends Component {
+//   return (
+//     <Sidebar.Pushable as={Segment}>
+//       <Sidebar
+//         as={Menu}
+//         animation='overlay'
+//         icon='labeled'
+//         inverted
+//         onHide={() => setVisible(false)}
+//         vertical
+//         visible={visible}
+//         width='thin'
+//       >
+//         <Menu.Item as='a'>
+//           <Icon name='home' />
+//           Home
+//         </Menu.Item>
+//         <Menu.Item as='a'>
+//           <Icon name='gamepad' />
+//           Games
+//         </Menu.Item>
+//         <Menu.Item as='a'>
+//           <Icon name='camera' />
+//           Channels
+//         </Menu.Item>
+//       </Sidebar>
 
-state = {
-  top : 0,
-  prevScrollpos : window.pageYOffset
-}
-componentDidMount () {
-  window.addEventListener('scroll', this.handleScroll)
-}
+//       <Sidebar.Pusher>
+//         <Segment basic>
+//           <Header as='h3'>Application Content</Header>
+//           <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+//         </Segment>
+//       </Sidebar.Pusher>
+//     </Sidebar.Pushable>
+//   )
+// }
 
-handleScroll = () => {
-  let {prevScrollpos} = this.state
-  console.log('prevScrollpos : ' + prevScrollpos)
-  var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-      this.setState({top : 0})
-  } else {
-      this.setState({top : -100})
-  }
-  this.setState({prevScrollpos : currentScrollPos})
-}
-
-render() {
-  let {top} = this.state
-  let style = {
-      top : `${top}px`
-      
-  }
-  return (
-    <div id="navbar" style = {style} >
-        <div className="wrap">
-        <a className="underline" href="/">Home</a>
-        <a className="underline" href="/paket-tour">Tour Domestik</a>
-        <a className="underline" href="#contact">Contact</a>
-        </div>
-      
-      <div className="sign-in">
-          <Link to="/login">
-              <button type="button" className="login" style={{float: "right"}}>Masuk</button>
-          </Link>
-                
-          <Link to="/register"> 
-              <button type="button" className="register" style={{float: "right"}}>Daftar</button>     
-          </Link>
-      </div>
-  </div>
-
-    );
-  }
-}
-
-export default NavbarPage;
-
-
-    
+// export default NavbarPage

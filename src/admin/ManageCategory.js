@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import SideBarAdmin from './SideBarAdmin';
 import Axios from 'axios'
 import {API_URL} from '../helpers/API_URL'
+import { MDBTable, MDBTableBody, MDBTableHead, MDBContainer } from 'mdbreact';
+import { Button } from '@material-ui/core'
 
 class ManageCategory extends Component {
     state = {
@@ -72,7 +74,8 @@ class ManageCategory extends Component {
                     <td>{item.title}</td>
                     <td>{item.category}</td>
                     <td>
-                            <input type="button" value="Delete" onClick={() => this.onBtnDeleteClick(item.productId)} />
+                    <Button color="secondary" variant="outlined" onClick={() => this.onBtnDeleteClick(item.productId)}>Delete</Button>
+                            {/* <input type="button" value="Delete" onClick={() => this.onBtnDeleteClick(item.productId)} /> */}
                     </td>
                 </tr>
             )
@@ -103,6 +106,7 @@ class ManageCategory extends Component {
 
         Axios.post(API_URL + '/pacagakecat/addpackagecat', body)
         .then((res) => {
+            alert('Add Category Success')
             this.getListPackageCategory()
             this.getListCategory()
             this.getListProduct()
@@ -115,46 +119,47 @@ class ManageCategory extends Component {
     render() { 
         return (  
             <div>
-                <SideBarAdmin />
-                <center>
-                <table style={{marginTop: "20px"}}>
-                    <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Product</th>
-                                <th>Category</th>
-                                <th>Action</th>
-                            </tr>
-                    </thead>
-                            <tbody>
-                                {this.renderListPackageCategory()}
-                            </tbody>
-                    <tfoot>
-                        <tr>
-                            <td />
+            <SideBarAdmin />
+                <div style={{display: 'flex', justifyContent: 'center', marginTop: 30}}>
                             <td>
-                                <select value = {this.state.addProductId} onChange={(e) => this.setState({addProductId: parseInt(e.target.value)})}
-                                >
-                                    <option value={null}>---Pilih Product---</option>
-                                    {this.renderListPilihanPackage()}
-                                </select>
-                            </td>
+                                 <select value = {this.state.addProductId} onChange={(e) => this.setState({addProductId: parseInt(e.target.value)})}
+                                 >
+                                     <option value={null}>---Pilih Product---</option>
+                                     {this.renderListPilihanPackage()}
+                                 </select>
+                             </td>
+
+                           
 
                             <td>
-                                <select value = {this.state.addCategoryId} onChange={(e) => this.setState({addCategoryId: parseInt(e.target.value)})}
-                                >
-                                    <option value={null}>---Pilih Category---</option>
-                                   {this.renderListPilihanCategory()}
-                                </select>
-                            </td>
-                            <td>
-                                <input type="button" value="Add" onClick={this.btnAddPackagecat} />
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-                </center>
+                                 <select value = {this.state.addCategoryId} onChange={(e) => this.setState({addCategoryId: parseInt(e.target.value)})}
+                                 >
+                                     <option value={null}>---Pilih Category---</option>
+                                    {this.renderListPilihanCategory()}
+                                 </select>
+                             </td>
+                             
+                             <Button style={{height: 25, padding: '0px', marginLeft: 5}} color="primary" variant="outlined" onClick={this.btnAddPackagecat}>Add</Button>
+                                 {/* <input type="button" value="Add" onClick={this.btnAddPackagecat} /> */}
+                         
+                                 </div>
+            <div className="backgroundCategory">
+            <MDBTable bordered>
+                <MDBTableHead>
+                    <tr>
+                        <th>No</th>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </MDBTableHead>
+                <MDBTableBody>
+                    {this.renderListPackageCategory()}
+                </MDBTableBody>
+            </MDBTable>
+         
             </div>
+        </div>
         );
     }
 }

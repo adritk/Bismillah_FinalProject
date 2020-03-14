@@ -15,7 +15,7 @@ import {
 import "../style/signinup.css";
 
 import { connect } from 'react-redux'
-import { onLogin} from '../redux/action'
+import { onLogin, KeepLogin} from '../redux/action'
 import { Link, Redirect } from 'react-router-dom'
 
 class Login extends React.Component {
@@ -130,4 +130,4 @@ const mapStateToProps = (state) => {
     role: state.user.role
   }
 }
-export default connect(mapStateToProps, { onLogin})(Login);
+export default connect(mapStateToProps, { onLogin, KeepLogin})(Login);
