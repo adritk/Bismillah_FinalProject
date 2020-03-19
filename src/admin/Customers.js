@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios'
-import { MDBTable, MDBTableBody, MDBTableHead, MDBContainer } from 'mdbreact';
+import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 import { API_URL } from '../helpers/API_URL';
 import SideBarAdmin from './SideBarAdmin'
 

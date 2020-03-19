@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SideBarAdmin from './SideBarAdmin';
 import Axios from 'axios'
-import { MDBTable, MDBTableBody, MDBTableHead, MDBContainer } from 'mdbreact';
+import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 import { API_URL } from '../helpers/API_URL';
 
 class AllCartUser extends Component {

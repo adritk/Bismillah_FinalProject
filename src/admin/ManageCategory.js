@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SideBarAdmin from './SideBarAdmin';
 import Axios from 'axios'
 import {API_URL} from '../helpers/API_URL'
-import { MDBTable, MDBTableBody, MDBTableHead, MDBContainer } from 'mdbreact';
+import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 import { Button } from '@material-ui/core'
 
 class ManageCategory extends Component {
@@ -11,13 +11,34 @@ class ManageCategory extends Component {
         addCategoryId : null,
         listPackageCategory : [],
         product : [],
-        listCategory : []
+        listCategory : [],
+        getPageOne : [],
+        getPageTwo : []
     }
 
     componentDidMount() {
         this.getListPackageCategory()
         this.getListCategory()
         this.getListProduct()
+        // this.getOneToFive()
+        this.renderOneToFive()
+        this.getFiveToTen()
+    }
+
+    getOneToFive = () => {
+        Axios.get(API_URL + '/pacagakecat/getonetofive')
+        .then((res) => {
+            console.log(res.data)
+            this.setState({getPageOne : res.data})
+        })
+    }
+
+    getFiveToTen = () => {
+        Axios.get(API_URL + '/pacagakecat/getfivetoten')
+        .then((res) => {
+            console.log(res.data)
+            this.setState({getPageTwo : res.data})
+        })
     }
 
     // ambil semua data products
@@ -115,6 +136,21 @@ class ManageCategory extends Component {
             console.log(err.response.data)
         })
     }
+
+    renderOneToFive = () => {
+        return this.state.getPageOne.map((item,index) => {
+            return (
+                <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{item.title}</td>
+                    <td>{item.category}</td>
+                    <td>
+                    <Button color="secondary" variant="outlined" onClick={() => this.onBtnDeleteClick(item.productId)}>Delete</Button>
+                    </td>
+                </tr>
+            )
+        })
+    }
     
     render() { 
         return (  
@@ -155,9 +191,20 @@ class ManageCategory extends Component {
                 </MDBTableHead>
                 <MDBTableBody>
                     {this.renderListPackageCategory()}
+                    {/* {this.renderOneToFive()} */}
                 </MDBTableBody>
             </MDBTable>
-         
+            
+
+            {/* <nav aria-label="Page navigation example">
+                <ul className="pagination pg-blue">
+                    <li className="page-item"><a className="page-link">Previous</a></li>
+                    <li className="page-item" ><a className="page-link" onClick={this.renderOneToFive}>1</a></li>
+                    <li className="page-item"><a className="page-link">2</a></li>
+                    <li className="page-item"><a className="page-link">3</a></li>
+                    <li className="page-item"><a className="page-link">Next</a></li>
+                </ul>
+            </nav> */}
             </div>
         </div>
         );

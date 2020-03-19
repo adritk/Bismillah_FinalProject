@@ -132,8 +132,6 @@
     position: relative;
 }
 
-
-
 .bannerInfo {
     background: url('../img/petaindonesia.jpg') no-repeat;
     height: 240px;
@@ -142,7 +140,6 @@
     background-color: #304352;
     padding-bottom: 300px;
 }
-
 
 .bannerInfo p {
     height: 50px;
@@ -181,6 +178,12 @@
 
 
 
-
+/* @media (max-width: 720px) {
+    .section-2 {
+        width: 100%;
+        background-color: blue;
+        float: left;
+    }
+} */
 
 

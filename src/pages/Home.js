@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Boxinfo from '../component/Boxinfo'
 import Axios from 'axios'
 import '../style/home.css'
-import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardImage } from "mdbreact";
+import { MDBContainer, MDBRow} from "mdbreact";
 import { search, shield, card, cardjawa, cardbali, cardsulawesi, cardsumatera, cardlombok, cardkupang, cardpulauseribu, cardsabang } from '../img'
 import { API_URL } from '../helpers/API_URL'
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
@@ -44,7 +44,7 @@ class Home extends Component {
     renderTour = () => {
         return (
             this.state.allPackages.map((val, index) => {
-                if (val.id == 1 || val.id == 2 || val.id == 3) {
+                if (val.id === 1 || val.id === 2 || val.id === 3) {
                     return (
                         <div className="box-2" key={index}>
                             <img src={API_URL + '/' + val.imagePath} className="image" alt="notfound" />
@@ -75,7 +75,7 @@ class Home extends Component {
     renderAttraction = () => {
         return (
             this.state.allPackages.map((val, index) => {
-                if (val.id == 4 || val.id == 5 || val.id == 6) {
+                if (val.id === 4 || val.id === 5 || val.id === 6) {
                     return (
                         <div className="box-2" key={index}>
                             <img src={API_URL + '/' + val.imagePath} className="image" alt="notfound" />

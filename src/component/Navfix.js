@@ -8,6 +8,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
 import PlaceIcon from '@material-ui/icons/Place';
 import PhotoCameraIcon from '@material-ui/icons/PhotoCamera';
+import ReceiptIcon from '@material-ui/icons/Receipt';
 import InfoIcon from '@material-ui/icons/Info';
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -56,7 +57,19 @@ class Navfix extends Component {
                                 <div className="textLogout">
                                 <ShoppingCartIcon />
                                     Cart
+                                </div>
+                                </Link>
+                            </li>
 
+                            <li>
+                                <Link to={{
+                                    pathname: '/history', 
+                                    state: {
+                                        id: this.props.id
+                                    }}}>
+                                <div className="textLogout">
+                                <ReceiptIcon />
+                                    History
                                 </div>
                                 </Link>
                             </li>
@@ -70,13 +83,13 @@ class Navfix extends Component {
                                 </Link>
                             </li>
 
-                           
-
                         </ul>
                     </div>
 
                     <div className="second-nav">
                         <ul className="menu-nav">
+                            <div style={{marginRight: 300}}>
+
                             <Link to="/" style={{ color: "black" }}>
                                 <li>
                                     <HomeIcon className="iconNav" />Home
@@ -102,6 +115,7 @@ class Navfix extends Component {
                                 </AnchorLink>
                             </li>
 
+                            </div>
                         </ul>
                     </div>
                 </div>
@@ -132,6 +146,8 @@ class Navfix extends Component {
 
                     <div className="second-nav">
                         <ul className="menu-nav">
+                            <div style={{marginRight: 300}}>
+
                             <Link to="/" style={{ color: "black" }}>
                                 <li>
                                     <HomeIcon className="iconNav" />Home
@@ -157,6 +173,7 @@ class Navfix extends Component {
                                 </AnchorLink>
                             </li>
 
+                            </div>
                         </ul>
                     </div>
                 </div>

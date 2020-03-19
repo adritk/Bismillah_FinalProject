@@ -3,8 +3,7 @@ import '../style/tour.css'
 import Axios from 'axios'
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-import FlightIcon from '@material-ui/icons/Flight';
-import { MDBBtn , MDBContainer, MDBRow } from 'mdbreact';
+import {MDBContainer, MDBRow } from 'mdbreact';
 import {API_URL} from '../helpers/API_URL'
 import {Link} from 'react-router-dom'
 import Navfix from '../component/Navfix';

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import NotFound from './component/NotFound'
 import { connect } from 'react-redux'
-import { onLogin, KeepLogin } from './redux/action'
+import { KeepLogin } from './redux/action'
 import './App.css';
 
 
@@ -24,6 +24,7 @@ import PackageDetails from './pages/PackageDetails';
 import Verified from './pages/Verified'
 import CartUser from './pages/CartUser'
 import CheckoutUser from './pages/CheckoutUser'
+import HistoryUser from './pages/HistoryUser'
 
 
 class App extends Component {
@@ -46,13 +47,14 @@ class App extends Component {
         <Route path='/package-details' component={PackageDetails} />
         <Route path='/verified' component={Verified} />
         <Route path='/cartuser' component={CartUser} />
-        <Route path='/manageproduct' component={ManageProduct} />
+        {/* <Route path='/manageproduct' component={ManageProduct} />
         <Route path='/managecategory' component={ManageCategory} />
         <Route path='/admin' component={Admin} />
+        <Route path='/customers' component={Customers} /> */}
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
-        <Route path='/customers' component={Customers} />
         <Route path='/checkout' component={CheckoutUser} />
+        <Route path='/history' component={HistoryUser} />
         <Route path='*' component={NotFound} />
         </Switch>
       </div>

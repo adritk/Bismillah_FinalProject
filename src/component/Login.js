@@ -4,19 +4,17 @@ import {
   MDBRow,
   MDBCol,
   MDBBtn,
-  MDBIcon,
   MDBView,
   MDBContainer,
   MDBCard,
   MDBCardBody,
-  MDBInput,
   MDBAnimation
 } from "mdbreact";
 import "../style/signinup.css";
 
 import { connect } from 'react-redux'
 import { onLogin, KeepLogin} from '../redux/action'
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 class Login extends React.Component {
   state = {
@@ -41,13 +39,13 @@ class Login extends React.Component {
 
   render() {
     // bawaan mdbreact
-    const overlay = (
-      <div
-        id="sidenav-overlay"
-        style={{ backgroundColor: "transparent" }}
-        onClick={this.toggleCollapse("navbarCollapse")}
-      />
-    );
+    // const overlay = (
+    //   <div
+    //     id="sidenav-overlay"
+    //     style={{ backgroundColor: "transparent" }}
+    //     onClick={this.toggleCollapse("navbarCollapse")}
+    //   />
+    // );
 
     // console.log(this.props.role)
     if (this.props.role === 'admin') {

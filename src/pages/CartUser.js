@@ -26,6 +26,7 @@ class CartUser extends Component {
 
     getAllCart = () => {
         let id = this.props.location.state.id
+        console.log(id)
         Axios.get(API_URL + `/getallcartbyid/${id}`)
             .then((res) => {
                 this.setState({ data: res.data })

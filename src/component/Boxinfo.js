@@ -4,8 +4,8 @@ import { MDBCol} from "mdbreact";
 
 const Boxinfo = (props) => {
     return (
-        <MDBCol size="4" id = 'card-col'>
-            <img src = {props.foto} />
+        <MDBCol size="4" id='card-col'>
+            <img src = {props.foto} alt="not-found" />
             <h1>{props.title}</h1>
             <p>{props.text}</p>
         </MDBCol>

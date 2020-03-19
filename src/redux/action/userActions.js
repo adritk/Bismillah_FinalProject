@@ -46,7 +46,7 @@ export const KeepLogin = () => {
             }
             Axios.post(API_URL + '/users/keeplogin', {}, headers)
             .then((res) => {
-                console.log(res.data.verified)
+                // console.log(res.data.verified)
                 dispatch({
                     type : 'LOGIN',
                     payload : res.data

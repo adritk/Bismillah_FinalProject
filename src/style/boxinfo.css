@@ -29,3 +29,10 @@ img {
     margin-top: 20px;
     /* border: 1px solid black; */
 }
+
+/* @media (max-width: 720px) {
+    #card-col {
+        width: 100%;
+        background-color: blue;
+    }
+} */
