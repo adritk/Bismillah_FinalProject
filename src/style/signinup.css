@@ -61,10 +61,22 @@
   }
 
   .white-text-change {
-    background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
-    /* border-radius: 40px; */
+    /* background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%); */
+    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
 }
 
 .gradient-change {
-    background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%);
+    /* background-image: linear-gradient(to right, #d7d2cc 0%, #304352 100%); */
+    background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+}
+
+.fontStyle {
+  font-family: 'Handlee', cursive;
+  font-size: 36px;
+}
+
+.fotoLogin {
+  background: url('../img/undrawtravel.svg');
+  background-size: 310px;
+  background-repeat: no-repeat;
 }

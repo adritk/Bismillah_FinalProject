@@ -1,23 +1,23 @@
 .backgroundCart {
-    /* border-radius: 20px; */
     width: 90%;
-    height: 70%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 50px;
-    box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.3);
+    position: relative;
+    top: 150px;
+    left: 80px;
+}
+
+.backgroundTableAdmin {
+    width: 90%;
+    box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 0.3);
+    position: relative;
+    top: 50px;
+    left: 80px;
 }
 
 .backgroundCategory {
-    /* border-radius: 20px; */
     width: 90%;
-    height: 160%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    margin-top: 350px;
-    /* box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.3); */
+    position: relative;
+    left: 50px;
+    top: 50px;
+    box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.3);
 }

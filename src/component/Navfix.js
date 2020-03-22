@@ -16,16 +16,32 @@ import { logoliburin } from '../img'
 
 import { connect } from 'react-redux'
 import { Logout } from '../redux/action'
+import { API_URL } from '../helpers/API_URL';
+import Axios from 'axios'
 
 
 
 class Navfix extends Component {
+    state = {
+        cartuser : []
+    }
+
+//    async componentDidMount(id) {
+//         const cartuser = await Axios.get(API_URL + `/getallcartbyid/${id}`)
+//         this.setState({cartuser: cartuser.data})
+//     }
+
+    // componentDidMount() {
+        
+    // }
+
     onBtnLogout = () => {
         localStorage.removeItem('token')
         this.props.Logout()
     }
 
     render() {
+        console.log(this.state.cartuser)
         if (this.props.role === 'user') {
             return (
                 <div className="myNavbar">
@@ -43,10 +59,10 @@ class Navfix extends Component {
                             {
                                 this.props.role
                                     ?
-                                    `HI! ${this.props.username}`
+                                    `Hello, ${this.props.username}`
                                     :
                                     <PersonIcon />
-                            }
+                                }
 
                             <li>
                                 <Link to={{
@@ -55,8 +71,26 @@ class Navfix extends Component {
                                         id: this.props.id
                                     }}}>
                                 <div className="textLogout">
-                                <ShoppingCartIcon />
+                                    {/* <span style={{
+                                        position: 'absolute',
+                                        top: '2px',
+                                        left: '1261px',
+                                        backgroundColor: 'darkblue',
+                                        borderRadius: '50%',
+                                        height: '20px',
+                                        width: '20px',
+                                        lineHeight: '20px',
+                                        
+                                    }}>
+
+                                    {this.state.cartuser.length}
+                                    </span> */}
+                                   
+                                    
+                                    <ShoppingCartIcon />
+                                    
                                     Cart
+                                
                                 </div>
                                 </Link>
                             </li>
@@ -140,7 +174,12 @@ class Navfix extends Component {
                                     Login
                                 </li>
                             </Link>
-                            <li><PersonIcon />Register</li>
+                            <Link to="/register">
+                                <li className="login">
+                                    <PersonIcon />
+                                    Register
+                                </li>
+                            </Link>
                         </ul>
                     </div>
 

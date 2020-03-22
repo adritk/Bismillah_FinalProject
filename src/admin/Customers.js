@@ -3,6 +3,7 @@ import Axios from 'axios'
 import { MDBTable, MDBTableBody, MDBTableHead } from 'mdbreact';
 import { API_URL } from '../helpers/API_URL';
 import SideBarAdmin from './SideBarAdmin'
+// import '../style/cartuser.css'
 
 class Customer extends Component {
     state = {
@@ -36,7 +37,7 @@ class Customer extends Component {
         return (
         <div>
             <SideBarAdmin />
-            <div className="backgroundCart">
+            <div className="backgroundTableAdmin">
 
             {/* <MDBContainer> */}
             <MDBTable bordered>

@@ -191,7 +191,6 @@ class ManageCategory extends Component {
                 </MDBTableHead>
                 <MDBTableBody>
                     {this.renderListPackageCategory()}
-                    {/* {this.renderOneToFive()} */}
                 </MDBTableBody>
             </MDBTable>
             

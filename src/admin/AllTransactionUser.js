@@ -51,7 +51,7 @@ class TransactionUser extends Component {
         return (
             <div>
             <SideBarAdmin />
-                <div className="backgroundCart">
+                <div className="backgroundTableAdmin">
                 <MDBTable bordered>
                         <MDBTableHead>
                             <tr>

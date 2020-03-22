@@ -4,6 +4,7 @@ import { API_URL } from '../helpers/API_URL'
 import { MDBTable, MDBTableHead, MDBTableBody } from 'mdbreact'
 import { Button } from '@material-ui/core'
 import Navfix from '../component/Navfix'
+import {Link} from 'react-router-dom'
 
 class CheckoutUser extends Component {
     state = {
@@ -18,6 +19,7 @@ class CheckoutUser extends Component {
         let {idUser, idCart} = this.props.location.state
         Axios.get(API_URL + `/getcheckoutbyid?id=${idUser}&cartId=${idCart}`)
         .then((res) => {
+            console.log(res.data)
             this.setState({checkoutUser: res.data[0]})
         })
         .catch((err) => {
@@ -30,7 +32,8 @@ class CheckoutUser extends Component {
         console.log(this.props.location.state)
         Axios.post(API_URL + `/checkoutuser?productId=${idProduct}&userId=${idUser}`)
         .then((res) => {
-            console.log('bayar sukses')
+            alert('Bayar Sukses')
+
         })
     }
 
@@ -44,14 +47,15 @@ class CheckoutUser extends Component {
                 <td>{checkoutUser.departure}</td>
                 <td>{checkoutUser.status}</td>
                 <td>
-                <Button style={{marginRight: '5px'}} color="primary" variant="outlined" onClick={this.addCheckoutUser}>Bayar</Button>
+                <Link to="/">
+                <Button style={{marginRight: '5px'}} color="primary" variant="outlined" onClick={this.addCheckoutUser} to="/history">Bayar</Button>
+                </Link>
                 </td>
             </tr>
         )
     }
 
     render() {
-        console.log(this.state.checkoutUser)
         return (
             <div>
             <Navfix />

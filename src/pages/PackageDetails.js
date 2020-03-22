@@ -7,6 +7,7 @@ import { MDBRow, MDBCol } from 'mdbreact';
 import {Redirect} from 'react-router-dom'
 import { Button } from '@material-ui/core';
 import '../style/packagedetails.css'
+import {Link} from 'react-router-dom'
 
 // icons
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
@@ -164,9 +165,12 @@ class PackageDetails extends Component {
                                                 </strong>
                                             </div>
                                             <hr style={{ width: '70%' }}></hr>
+
+                                            <Link to="/">
                                             <Button variant="contained" color='primary' onClick={() => this.addToCart()} id="btn" >
                                                 Add To Cart
                                             </Button>
+                                            </Link>
                                         </MDBCol>
                                     </MDBRow>
                                 </MDBCol>
