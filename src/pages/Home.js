@@ -187,7 +187,7 @@ class Home extends Component {
                             </span>
                     </div>
 
-                    <ul>
+                    <ul style={{fontFamily: 'acme'}}>
                         <li>
                             <p>Paket Tour</p>
                         </li>

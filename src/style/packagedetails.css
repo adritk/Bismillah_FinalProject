@@ -115,3 +115,14 @@
     text-align: justify;
     word-wrap: break-word;
 }
+
+.backgroundItinerary {
+    border-radius: 20px;
+    width: 73%;
+    position: relative;
+    height: auto;
+    left: -45px;
+    top: 0px;
+    padding-right: 25px;
+    box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.3);
+}

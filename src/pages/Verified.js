@@ -29,7 +29,7 @@ class Verified extends Component {
     render() { 
         if(this.state.Redirect) {
             return (
-                <Redirect to="/">
+                <Redirect to="/login">
 
                 </Redirect>
             )

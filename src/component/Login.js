@@ -86,13 +86,13 @@ class Login extends React.Component {
 
 
                         <label htmlFor="defaultFormLoginEmailEx" className="grey-text" style={{ float: 'left' }}>
-                          Your email
+                          Username
                             </label>
                         <input type="text" id="defaultFormLoginEmailEx" className="form-control" ref="username" />
                         <br />
 
                         <label htmlFor="defaultFormLoginPasswordEx" className="grey-text" style={{ float: 'left', color:'black'}}>
-                          Your password
+                          Password
                             </label>
                         <input type="password" id="defaultFormLoginPasswordEx" className="form-control" ref="password" />
 

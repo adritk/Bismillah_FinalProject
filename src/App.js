@@ -88,6 +88,7 @@ class App extends Component {
         <Route path='/tourdomestik' component={Tour} />
         <Route path='/tiketatraksi' component={Attraction} />
         <Route path='/package-details' component={PackageDetails} />
+        <Route path='/verified' component={Verified} />
         <Route path='*' component={NotFound} />
         </Switch>
       </div>

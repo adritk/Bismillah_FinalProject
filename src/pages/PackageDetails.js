@@ -184,7 +184,7 @@ class PackageDetails extends Component {
                     <DirectionsBusIcon fontSize='large' color="primary" style={{ fontSize: 40 }} />
                     <span>ITINERARY</span>
                 </div>
-                <div className="itinerary" dangerouslySetInnerHTML={{ __html: `${this.state.tour.itinerary}` }} >
+                <div className="itinerary backgroundItinerary" dangerouslySetInnerHTML={{ __html: `${this.state.tour.itinerary}` }} >
 
                 </div>
 

@@ -14,7 +14,7 @@ import "../style/signinup.css";
 import {connect} from "react-redux"
 import {userRegister} from "../redux/action"
 import {Redirect} from 'react-router-dom'
-import { Button } from '@material-ui/core'
+import { Button, Link } from '@material-ui/core'
 
 class Register extends React.Component {
   toggleCollapse = collapseID => () =>
@@ -49,6 +49,7 @@ class Register extends React.Component {
                 role : 'user'
               }
               alert('register success')
+
               this.props.userRegister(data)
           } 
           else if (password !== confirmPass) 
@@ -66,7 +67,7 @@ class Register extends React.Component {
   render() {
     if(this.props.username) {
       return (
-        <Redirect to="/login">
+        <Redirect to="/">
 
         </Redirect>
       )
@@ -127,7 +128,9 @@ class Register extends React.Component {
 
 
                         <div className="text-center mt-4 black-text">
-                        <Button style={{outline: 'none'}} color="#424242" variant="contained" onClick={this.registerUser}>Sign Up</Button>
+                        <Link to="/">
+                            <Button style={{outline: 'none'}} color="#424242" variant="contained" onClick={this.registerUser}>Sign Up</Button>
+                        </Link>
                           <hr className="hr-light" />
                         </div>
 
