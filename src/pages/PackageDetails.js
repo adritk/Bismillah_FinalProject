@@ -20,7 +20,8 @@ import PeopleIcon from '@material-ui/icons/People';
 class PackageDetails extends Component {
     state = {
         tour: [],
-        angka: 0,
+        mostBuy: [],
+        angka: 0
     }
 
     componentDidMount() {
@@ -29,12 +30,14 @@ class PackageDetails extends Component {
         Axios.get(API_URL + `/getpackagebyid/${id}`)
             .then((res) => {
                 // console.log(res.data)
-                this.setState({ tour: res.data[0] })
+                this.setState({ tour: res.data[0]})
                 // console.log(this.state.tour.harga)
             })
             .catch((err) => {
                 console.log(err)
             })
+            
+
     }
 
     tambah = () => {
@@ -66,33 +69,43 @@ class PackageDetails extends Component {
 
     addToCart = () => {
         let {angka, tour} = this.state
-        let data = {
-            quantity : angka,
-            productId : tour.id,
-            harga : tour.harga,
-            total: tour.harga * angka,
-            departure : this.refs.departure.value,
-            status : "Unpaid"
-        }
-        // console.log(data)
-        
-        const token = localStorage.getItem('token')
-        if(token) {
-            const headers = {
-                headers : {'Authorization' : `Bearer ${token}`}
+        if(angka === 0) {
+            alert('isi dulu')
+        } else {
+
+            let data = {
+                quantity : angka,
+                productId : tour.id,
+                harga : tour.harga,
+                total: tour.harga * angka,
+                departure : this.refs.departure.value,
+                status : "Unpaid"
             }
+            // console.log(data)
+            
+            const token = localStorage.getItem('token')
+            if(token) {
+                const headers = {
+                headers : {'Authorization' : `Bearer ${token}`}
+                }
             Axios.post(API_URL + '/addtocart', data, headers)
-            // console.log(token)
             .then((res) => {
                 alert('Bokking Successfull')
             })
-        } else {
-            return (
-                <Redirect to="/login">
 
-                </Redirect>
-            )
-        }
+            .catch((err)=> {
+                console.log(err)
+            })
+            // console.log(token)
+        } 
+        // else {
+        //     return (
+        //         <Redirect to="/login">
+
+        //         </Redirect>
+        //     )
+        // }
+    }
         // console.log(data)
     }
 

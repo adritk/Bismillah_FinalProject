@@ -1,11 +1,12 @@
 import Axios from 'axios'
 import {API_URL} from '../../helpers/API_URL'
 
-export const onLogin = (username, password) => {
+export const onLogin = (username, password, email) => {
     return(dispatch) => {
         Axios.post(API_URL + '/users/login',{
             username,
-            password
+            password,
+            email
         })
         .then((res) => {
     

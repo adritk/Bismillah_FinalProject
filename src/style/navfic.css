@@ -43,14 +43,8 @@
   }
 
   .right-nav li:hover{
-    color: blue;
+    font-weight: 900;
   }
-
-  .penting:hover{
-    color: blue !important;
-  }
-  
-
 
 /* MAIN NAVBAR */
 .iconNav {
@@ -65,8 +59,7 @@
 }
 
 .menu-nav li:hover{
-    border-bottom: 2px;
-    color: blue;
+    font-weight: 900;
 }
 
 .menu-nav li{
@@ -80,8 +73,4 @@
 
 .textLogout {
     color: white !important;
-}
-
-.textLogout:hover {
-    color: blue !important;
 }

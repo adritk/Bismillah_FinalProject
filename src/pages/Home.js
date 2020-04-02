@@ -18,7 +18,8 @@ class Home extends Component {
         tourDomestik: [],
         themePark: [],
         waterPark: [],
-        atraksi: []
+        atraksi: [],
+        tourMostBuy: []
     }
 
     async componentDidMount() {
@@ -30,10 +31,12 @@ class Home extends Component {
         //     .catch((err) => {
         //         console.log(err)
         //     })
+        const tourMostBuy = await Axios.get(API_URL + `/mostbuy`)
         const allPackages = await Axios.get(API_URL + '/getpackage')
         const tourDomestik = await Axios.get(API_URL + '/getpackagedomestik')
         const waterPark = await Axios.get(API_URL + '/getwaterpark')
         const themePark = await Axios.get(API_URL + '/getthemepark')
+        this.setState({tourMostBuy: tourMostBuy.data})
         this.setState({allPackages: allPackages.data})
         this.setState({tourDomestik: tourDomestik.data})
         this.setState({waterPark: waterPark.data})
@@ -43,8 +46,8 @@ class Home extends Component {
 
     renderTour = () => {
         return (
-            this.state.allPackages.map((val, index) => {
-                if (val.id === 1 || val.id === 2 || val.id === 3) {
+            this.state.tourMostBuy.map((val, index) => {
+                // if (val.id === 1 || val.id === 2 || val.id === 3) {
                     return (
                         <div className="box-2" key={index}>
                             <img src={API_URL + '/' + val.imagePath} className="image" alt="notfound" />
@@ -67,7 +70,7 @@ class Home extends Component {
                             </div>
                         </div>
                     )
-                }
+                // }
             })
         )
     }

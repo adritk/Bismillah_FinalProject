@@ -30,18 +30,18 @@ class Login extends React.Component {
     }));
 
   onBtnLogin = () => {
-    let username = this.refs.username.value;
+    let username = this.refs.username.value ;
+    let email = this.refs.username.value
     let password = this.refs.password.value;
     if (username === '' || password === '') {
       alert('isi semua kolom')
     }
     else {
-      this.props.onLogin(username, password)
+      this.props.onLogin(username, password, email)
     }
   }
 
   render() {
-    // console.log(this.props.role)
     if (this.props.role === 'admin') {
       return (
         <Redirect to="/admin">
@@ -55,6 +55,7 @@ class Login extends React.Component {
         </Redirect>
       )
     }
+
     return (
       <div id="classicformpage">
         <MDBView>
@@ -86,7 +87,7 @@ class Login extends React.Component {
 
 
                         <label htmlFor="defaultFormLoginEmailEx" className="grey-text" style={{ float: 'left' }}>
-                          Username
+                          Username or Email
                             </label>
                         <input type="text" id="defaultFormLoginEmailEx" className="form-control" ref="username" />
                         <br />
@@ -133,4 +134,5 @@ const mapStateToProps = (state) => {
     role: state.user.role
   }
 }
+
 export default connect(mapStateToProps, { onLogin, KeepLogin})(Login);

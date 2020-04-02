@@ -41,7 +41,6 @@ class Navfix extends Component {
     }
 
     render() {
-        console.log(this.state.cartuser)
         if (this.props.role === 'user') {
             return (
                 <div className="myNavbar">
