@@ -4,10 +4,9 @@ import Footer from '../component/Footer'
 import Axios from 'axios'
 import { API_URL } from '../helpers/API_URL'
 import { MDBRow, MDBCol } from 'mdbreact';
-import {Redirect} from 'react-router-dom'
 import { Button } from '@material-ui/core';
 import '../style/packagedetails.css'
-import {Link} from 'react-router-dom'
+import {Link, Redirect} from 'react-router-dom'
 
 // icons
 import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
@@ -16,12 +15,15 @@ import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import PeopleIcon from '@material-ui/icons/People';
+import Swal from 'sweetalert2'
 
 class PackageDetails extends Component {
     state = {
         tour: [],
         mostBuy: [],
-        angka: 0
+        angka: 0,
+        redirectLogin: false,
+        redirectPurchase: false
     }
 
     componentDidMount() {
@@ -69,10 +71,16 @@ class PackageDetails extends Component {
 
     addToCart = () => {
         let {angka, tour} = this.state
+        const token = localStorage.getItem('token') 
         if(angka === 0) {
-            alert('isi dulu')
-        } else {
-
+            Swal.fire({
+                popup: 'swal2-show',
+                text: 'Please Fill In This Form',
+                backdrop: 'swal2-backdrop-show',
+                icon: 'warning'
+            })
+        }
+        else if(token){
             let data = {
                 quantity : angka,
                 productId : tour.id,
@@ -82,7 +90,6 @@ class PackageDetails extends Component {
                 status : "Unpaid"
             }
             // console.log(data)
-            
             const token = localStorage.getItem('token')
             if(token) {
                 const headers = {
@@ -90,27 +97,44 @@ class PackageDetails extends Component {
                 }
             Axios.post(API_URL + '/addtocart', data, headers)
             .then((res) => {
-                alert('Bokking Successfull')
+                // alert('Booking Successfull, Please Check Your Cart')        
+            Swal.fire({
+                icon: 'success',
+                title: 'Booking Successfull, Please Check Your Cart'
+             
+            })
+                this.setState({redirectPurchase: true})
             })
 
             .catch((err)=> {
                 console.log(err)
             })
-            // console.log(token)
         } 
-        // else {
-        //     return (
-        //         <Redirect to="/login">
-
-        //         </Redirect>
-        //     )
-        // }
+    } else {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Please Login First',
+            showConfirmButton: false,
+            timer: 2000
+        })
+        this.setState({redirectLogin: true})
     }
-        // console.log(data)
+
     }
 
     render() {
-        let { tour } = this.state;
+        let { tour,redirectLogin, redirectPurchase } = this.state;
+        if(redirectLogin) {
+            return (
+                <Redirect to='/login' />
+            )
+        } 
+        else if (redirectPurchase) {
+            return (
+                <Redirect to={{pathname: '/'}} />
+            )
+        } 
+
         return (
             <div>
                 <div style={{ paddingBottom: 150}}>
@@ -179,11 +203,11 @@ class PackageDetails extends Component {
                                             </div>
                                             <hr style={{ width: '70%' }}></hr>
 
-                                            <Link to="/">
+                                            {/* <Link to="/"> */}
                                             <Button variant="contained" color='primary' onClick={() => this.addToCart()} id="btn" >
                                                 Add To Cart
                                             </Button>
-                                            </Link>
+                                            {/* </Link> */}
                                         </MDBCol>
                                     </MDBRow>
                                 </MDBCol>

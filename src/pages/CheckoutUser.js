@@ -13,6 +13,8 @@ import DateRangeIcon from '@material-ui/icons/DateRange';
 import PeopleIcon from '@material-ui/icons/People';
 import HourglassEmptyIcon from '@material-ui/icons/HourglassEmpty';
 
+import Swal from 'sweetalert2'
+
 import {logobca} from '../img'
 import { connect } from 'react-redux'
 
@@ -42,7 +44,11 @@ class CheckoutUser extends Component {
         console.log(this.props.location.state)
         Axios.post(API_URL + `/checkoutuser?productId=${idProduct}&userId=${idUser}`)
         .then((res) => {
-            alert('Bayar Sukses')
+            // alert('Bayar Sukses')
+            Swal.fire({
+                icon: 'success',
+                title: 'Your Payment Successful, Please Check Your History'
+            })
 
         })
     }
@@ -70,24 +76,6 @@ class CheckoutUser extends Component {
         return (
             <div>
             <Navfix />
-            {/* <div className="backgroundCart">
-                <MDBTable bordered>
-                    <MDBTableHead>
-                        <tr>
-                            <td>Paket Tour</td>
-                            <td>Quantity</td>
-                            <td>Total Price</td>
-                            <td>Departure</td>
-                            <td>Status</td>
-                            <td>Action</td>
-                        </tr>
-                    </MDBTableHead>
-                    <MDBTableBody>
-                        {this.renderCheckout()}
-                    </MDBTableBody>
-                </MDBTable>
-            </div> */}
-            
           <div className="backgroundPayment">
             <MDBRow>
                 <MDBCol  sm="4">
@@ -140,12 +128,6 @@ class CheckoutUser extends Component {
                         </Link>
                     </div>
                     </div>
-
-
-                      
-
-                     
-
                 </MDBCol>
             </MDBRow>
           </div>

@@ -15,6 +15,7 @@ import {connect} from "react-redux"
 import {userRegister} from "../redux/action"
 import {Redirect} from 'react-router-dom'
 import { Button, Link } from '@material-ui/core'
+import Swal from 'sweetalert2'
 
 class Register extends React.Component {
   toggleCollapse = collapseID => () =>
@@ -24,7 +25,8 @@ class Register extends React.Component {
 
 
   state = {
-    collapseID: ""
+    collapseID: "",
+    redirectLogin: false
     // char: false,
     // spec: false,
     // num: false,
@@ -48,26 +50,46 @@ class Register extends React.Component {
                 password,
                 role : 'user'
               }
-              alert('register success')
-
+              Swal.fire({
+                icon: 'success',
+                title: 'Register Success',
+                showConfirmButton: false,
+                timer: 2000
+            })
+            Swal.fire({
+              icon: 'success',
+              title: 'Register Success, Please Login First'
+          })
+              this.setState({redirectLogin: true})
               this.props.userRegister(data)
           } 
           else if (password !== confirmPass) 
           {
-            alert('password must be same')
+            Swal.fire({
+              popup: 'swal2-show',
+              text: 'Confirm Password Must Be Same',
+              backdrop: 'swal2-backdrop-show',
+              icon: 'warning'
+          })
           }
       }
       else 
       {
-        alert('please fill all this form')
+        Swal.fire({
+          popup: 'swal2-show',
+          text: 'Please Fill In This Form',
+          backdrop: 'swal2-backdrop-show',
+          icon: 'warning'
+      })
       }
 }
   
 
   render() {
-    if(this.props.username) {
+    let {redirectLogin} = this.state
+    if(redirectLogin) {
       return (
-        <Redirect to="/">
+        <Redirect to='/login'>
 
         </Redirect>
       )
@@ -128,9 +150,9 @@ class Register extends React.Component {
 
 
                         <div className="text-center mt-4 black-text">
-                        <Link to="/">
+                        {/* <Link to="/"> */}
                             <Button style={{outline: 'none'}} color="#424242" variant="contained" onClick={this.registerUser}>Sign Up</Button>
-                        </Link>
+                        {/* </Link> */}
                           <hr className="hr-light" />
                         </div>
 

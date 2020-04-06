@@ -1,5 +1,6 @@
 import Axios from 'axios'
 import {API_URL} from '../../helpers/API_URL'
+import Swal from 'sweetalert2'
 
 export const onLogin = (username, password, email) => {
     return(dispatch) => {
@@ -19,7 +20,12 @@ export const onLogin = (username, password, email) => {
         })
         .catch((err) => {
             localStorage.removeItem('token')
-            alert('username or password invalid')
+            Swal.fire({
+                popup: 'swal2-show',
+                text: 'Username Or Password Invalid',
+                backdrop: 'swal2-backdrop-show',
+                icon: 'error'
+            })
             // console.log(err.response.data)
             // alert(err.response.data)
             dispatch({
@@ -66,8 +72,8 @@ export const userRegister = (data) => {
     return(dispatch) => {
         Axios.post(API_URL + '/users/register', data)
         .then((res) => {
-            console.log(res.data.token)
-            localStorage.setItem('token', res.data.token)
+            console.log(res.data[0].token)
+            localStorage.setItem('token', res.data[0].token)
             dispatch({
                 type: 'LOGIN',
                 payload: res.data

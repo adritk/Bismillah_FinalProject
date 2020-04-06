@@ -16,6 +16,7 @@ import { Button } from '@material-ui/core'
 import { connect } from 'react-redux'
 import { onLogin, KeepLogin} from '../redux/action'
 import { Redirect } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 import {undrawtravel} from '../img'
 
@@ -34,7 +35,12 @@ class Login extends React.Component {
     let email = this.refs.username.value
     let password = this.refs.password.value;
     if (username === '' || password === '') {
-      alert('isi semua kolom')
+      Swal.fire({
+        popup: 'swal2-show',
+        text: 'Please Fill In This Form',
+        backdrop: 'swal2-backdrop-show',
+        icon: 'warning'
+    })
     }
     else {
       this.props.onLogin(username, password, email)
